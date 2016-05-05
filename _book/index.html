@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Theory and Methods for Tensor Data</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is my PhD thesis, formatted using the bookdown R package.">
+  <meta name="generator" content="bookdown 0.0.70 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Theory and Methods for Tensor Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is my PhD thesis, formatted using the bookdown R package." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Theory and Methods for Tensor Data" />
+  
+  <meta name="twitter:description" content="This is my PhD thesis, formatted using the bookdown R package." />
+  
+
+<meta name="author" content="David Gerard">
+
+<meta name="date" content="2016-05-05">
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="intro.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#section:boilertensor"><i class="fa fa-check"></i><b>2.1</b> Tensors</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#the-array-normal-model"><i class="fa fa-check"></i><b>2.2</b> The array normal model</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#contents-of-chapters"><i class="fa fa-check"></i><b>2.3</b> Contents of chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-holq.html"><a href="chapter-holq.html"><i class="fa fa-check"></i><b>3</b> A Higher-order LQ Decomposition for Separable Covariance Models</a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter-holq.html"><a href="chapter-holq.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holq"><i class="fa fa-check"></i><b>3.2</b> The incredible HOLQ</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-holq.html"><a href="chapter-holq.html#section:multnorm"><i class="fa fa-check"></i><b>3.3</b> The incredible HOLQ for separable covariance inference</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chapter-holq.html"><a href="chapter-holq.html#section:MLE"><i class="fa fa-check"></i><b>3.3.1</b> Maximum likelihood estimation</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holqjunior"><i class="fa fa-check"></i><b>3.3.2</b> HOLQ juniors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chapter-holq.html"><a href="chapter-holq.html#section:LRT"><i class="fa fa-check"></i><b>3.3.3</b> Likelihood ratio testing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chapter-holq.html"><a href="chapter-holq.html#section:othertensor"><i class="fa fa-check"></i><b>3.4</b> Other tensor decompositions</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="chapter-holq.html"><a href="chapter-holq.html#section:isvd"><i class="fa fa-check"></i><b>3.4.1</b> The incredible SVD</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:ihop"><i class="fa fa-check"></i><b>3.4.2</b> The IHOP decomposition</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holq_discussion"><i class="fa fa-check"></i><b>3.5</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theory and Methods for Tensor Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Theory and Methods for Tensor Data</h1>
+<h4 class="author"><em>David Gerard</em></h4>
+<h4 class="date"><em>2016-05-05</em></h4>
+</div>
+<div id="abstract" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Abstract</h1>
+<p>We present novel methods and new theory in the statistical analysis of tensor-valued data. A tensor is a multidimensional array. When data come in the form of a tensor, special methods and models are required to capture the dependencies represented by the indexing structure. For such data, it is often reasonable to assume a Kronecker structured covariance model for the random elements within a tensor. A natural type of Kronecker structured covariance model is the array normal model. We develop equivariant and minimax estimators under the array normal model whose risk performances are dramatically better than that of the maximum likelihood estimator. Although we find improved estimators, maximum likelihood estimation is still popular and useful (e.g. for likelihood ratio testing). We study in detail maximum likelihood estimation in separable covariance models, linking it to the relatively modern study of tensor decompositions. This leads us to develop, within this class of Kronecker structured covariance models, likelihood ratio test statistics which are simply represented as the ratio of two scale parameters from two separate tensor decompositions.</p>
+<p>We then focus our attention on mean estimation for tensor-valued data. We develop new classes of shrinkage estimators that alter the mode-specific singular values from a tensor generalization of the singular value decomposition. These classes often contain tuning parameters, whose selection is difficult. We choose these tuning parameters by minimizing an unbiased estimate of the mean squared error. From simulations, these new estimators outperform matrix-specific estimators when the tensor indexing structure meaningfully represents the heterogeneity of the underlying signal tensor.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

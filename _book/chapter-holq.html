@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Theory and Methods for Tensor Data</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is my PhD thesis, formatted using the bookdown R package.">
+  <meta name="generator" content="bookdown 0.0.70 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Theory and Methods for Tensor Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is my PhD thesis, formatted using the bookdown R package." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Theory and Methods for Tensor Data" />
+  
+  <meta name="twitter:description" content="This is my PhD thesis, formatted using the bookdown R package." />
+  
+
+<meta name="author" content="David Gerard">
+
+<meta name="date" content="2016-05-05">
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="methods.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#section:boilertensor"><i class="fa fa-check"></i><b>2.1</b> Tensors</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#the-array-normal-model"><i class="fa fa-check"></i><b>2.2</b> The array normal model</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#contents-of-chapters"><i class="fa fa-check"></i><b>2.3</b> Contents of chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-holq.html"><a href="chapter-holq.html"><i class="fa fa-check"></i><b>3</b> A Higher-order LQ Decomposition for Separable Covariance Models</a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter-holq.html"><a href="chapter-holq.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holq"><i class="fa fa-check"></i><b>3.2</b> The incredible HOLQ</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-holq.html"><a href="chapter-holq.html#section:multnorm"><i class="fa fa-check"></i><b>3.3</b> The incredible HOLQ for separable covariance inference</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chapter-holq.html"><a href="chapter-holq.html#section:MLE"><i class="fa fa-check"></i><b>3.3.1</b> Maximum likelihood estimation</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holqjunior"><i class="fa fa-check"></i><b>3.3.2</b> HOLQ juniors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chapter-holq.html"><a href="chapter-holq.html#section:LRT"><i class="fa fa-check"></i><b>3.3.3</b> Likelihood ratio testing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chapter-holq.html"><a href="chapter-holq.html#section:othertensor"><i class="fa fa-check"></i><b>3.4</b> Other tensor decompositions</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="chapter-holq.html"><a href="chapter-holq.html#section:isvd"><i class="fa fa-check"></i><b>3.4.1</b> The incredible SVD</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:ihop"><i class="fa fa-check"></i><b>3.4.2</b> The IHOP decomposition</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holq_discussion"><i class="fa fa-check"></i><b>3.5</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theory and Methods for Tensor Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter:holq" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> A Higher-order LQ Decomposition for Separable Covariance Models</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<p>There has been a recent surge of interest in methods for tensor-valued data in the machine learning, applied math, and statistical communities. Tensors, or multiway arrays, are higher-order generalizations of vectors and matrices whose elements are indexed by more than two index sets. Analysis methods for tensor-valued data include tensor decompositions and statistical modeling. The former aims to express the tensor in terms of interpretable lower-dimensional components. The latter uncovers patterns through the lens of statistical inference in a parametric statistical model.</p>
+The work in the field of tensor decompositions is extensive (see <span class="citation">Kolda and Bader (<a href="#ref-kolda2009tensor">2009</a>)</span> or <span class="citation">Cichocki et al. (<a href="#ref-cichockitensor">2014</a>)</span> for a review). A common class of tensor decompositions are Tucker decompositions <span class="citation">(Tucker <a href="#ref-tucker1966some">1966</a>)</span>, which, for an array <span class="math inline">\(X \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span> with entries <span class="math inline">\(X_{[i_1,\ldots,i_K]}\)</span>, expresses <span class="math inline">\(X\)</span> as a product of a “core” array <span class="math inline">\(S \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span> and matrices <span class="math inline">\(U_1,\ldots,U_K\)</span> where <span class="math inline">\(U_k \in \mathbb{R}^{p_k\times p_k}\)</span>, expressed as
+\begin{align}
+\label{eq:tuckerdecomp}
+X = (U_1,\ldots,U_K) \cdot S,
+\end{align}
+<p>where “<span class="math inline">\(\cdot\)</span>” is multilinear multiplication defined in Section <a href="intro.html#section:boilertensor">2.1</a>, and again later in Section <a href="chapter-holq.html#section:holq">3.2</a>. Most Tucker decompositions impose orthogonality constraints on the <span class="math inline">\(U_k\)</span>’s. One resulting tensor decomposition with such orthogonality constraints is the higher-order singular value decomposition (HOSVD) of <span class="citation">L. De Lathauwer, De Moor, and Vandewalle (<a href="#ref-de2000multilinear">2000</a><a href="#ref-de2000multilinear">a</a>)</span> and <span class="citation">L. De Lathauwer, De Moor, and Vandewalle (<a href="#ref-de2000best">2000</a><a href="#ref-de2000best">b</a>)</span>, a generalization of the singular value decomposition (SVD). There are other generalizations of the SVD to tensors outside the Tucker decomposition framework <span class="citation">(Silva and Lim <a href="#ref-de2008tensor">2008</a>, <span class="citation">Grasedyck (<a href="#ref-grasedyck2010hierarchical">2010</a>)</span>, <span class="citation">Kilmer and Martin (<a href="#ref-kilmer2011factorization">2011</a>)</span>)</span>. However, our work will focus on Tucker decompositions of the form (\ref{eq:tuckerdecomp}), where the <span class="math inline">\(U_k\)</span>’s have a variety of forms other than orthogonality.</p>
+A different perspective on tensor-valued data analysis uses statistical modeling, which aims to capture the dependencies between the entries of a tensor through a parametric model. One such model is the multilinear normal model <span class="citation">(Hoff <a href="#ref-hoff2011separable">2011</a>, <span class="citation">Ohlson, Rauf Ahmad, and Rosen (<a href="#ref-ohlson2013multilinear">2013</a>)</span>, <span class="citation">Manceur and Dutilleul (<a href="#ref-manceur2013maximum">2013</a>)</span>)</span> — also known as the “array normal model” or “tensor normal model” — which is an extension of the matrix normal model <span class="citation">(Srivastava and Khatri <a href="#ref-srivastava1979introduction">1979</a>, <span class="citation">Dawid (<a href="#ref-dawid1981some">1981</a>)</span>)</span>. A <span class="math inline">\(p_1 \times \cdots \times p_K\)</span> tensor <span class="math inline">\(X\)</span> follows a multilinear normal distribution if <span class="math inline">\(vec(X)\)</span> is normally distributed with covariance <span class="math inline">\(\Sigma_K \otimes \cdots \otimes \Sigma_1\)</span>, where “<span class="math inline">\(\otimes\)</span>” is the Kronecker product and “<span class="math inline">\(vec(\cdot)\)</span>” is the vectorization operator. For <span class="math inline">\(\Sigma_k = A_kA_k^T\)</span>, <span class="math inline">\(k = 1,\ldots,K\)</span>, the multilinear normal model may be written
+\begin{align}
+\label{eq:multnorm}
+X \overset{d}{=} (A_1,\ldots,A_K) \cdot Z,
+\end{align}
+<p>where <span class="math inline">\(Z \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span> contains independent and identically distributed (i.i.d.) standard normal entries. The multilinear normal model “separates” the covariances along the modes, or dimensions of <span class="math inline">\(X\)</span>. That is, the dependencies along the <span class="math inline">\(k\)</span>th mode are represented by a single covariance matrix, <span class="math inline">\(\Sigma_k\)</span>. Models where the covariance matrix is Kronecker structured are thus often called “separable covariance models”. Most results for the multilinear normal model can be easily generalized to array-variate elliptically contoured models with separable covariance <span class="citation">(Akdemir and Gupta <a href="#ref-akdemir2011array1">2011</a>)</span>.</p>
+In Section <a href="chapter-holq.html#section:holq">3.2</a>, we derive a novel tensor decomposition, a type of Tucker decomposition, whose components provide the maximum likelihood estimators (MLEs) of the parameters in the mean zero multilinear normal model, and array-variate elliptically contoured models with separable covariance in general. This tensor decomposition is a generalization of the LQ matrix decomposition to multiway arrays, and so we call it the incredible Higher-Order LQ decomposition (incredible HOLQ, or just HOLQ). One can view the LQ decomposition as taking the form
+\begin{align*}
+X = \ell L Q I_n\in \mathbb{R}^{p \times n},
+\end{align*}
+where <span class="math inline">\(\ell &gt; 0\)</span>, <span class="math inline">\(Q\)</span> has orthonormal rows, <span class="math inline">\(L\)</span> is a lower triangular matrix with positive diagonal elements and unit determinant, and <span class="math inline">\(I_n\)</span> is the identity matrix. The HOLQ takes the form
+\begin{align*}
+X = \ell(L_1,\ldots,L_K,I_n)\cdot Q \in\mathbb{R}^{p_1\times\cdots\times p_K \times n},
+\end{align*}
+<p>where <span class="math inline">\(\ell &gt; 0\)</span>, each <span class="math inline">\(L_k\)</span> is a lower triangular matrix with positive diagonal elements and unit determinant, and <span class="math inline">\(Q \in \mathbb{R}^{p_1 \times \cdots \times p_K \times n}\)</span> has certain orthogonality properties which generalize the orthonormal rows property of the LQ decomposition. Section <a href="chapter-holq.html#section:multnorm">3.3</a> shows the close relationship between the HOLQ and likelihood inference in the multilinear normal model: In Section <a href="chapter-holq.html#section:MLE">3.3.1</a>, we show that each <span class="math inline">\(L_k\)</span> matrix in the HOLQ is the Cholesky square root of the MLE for the <span class="math inline">\(k\)</span>th component covariance matrix, <span class="math inline">\(\Sigma_k\)</span>, in the multilinear normal model (\ref{eq:multnorm}). This relationship is analogous to the correspondence between the LQ decomposition and the MLE in the multivariate normal model.</p>
+<p>In the same way that likelihood estimation in the multilinear normal model is connected to the HOLQ, likelihood inference in submodels of the unconstrained multilinear normal model is connected to other decompositions where the component matrices have certain structures. In Section <a href="chapter-holq.html#section:holqjunior">3.3.2</a>, we consider constraining <span class="math inline">\(\Sigma_k\)</span> to be diagonal. This has the interpretation of statistical independence along the <span class="math inline">\(k\)</span>th mode and corresponds to constraining <span class="math inline">\(L_k\)</span> to be diagonal in the related tensor decomposition. We also consider constraining the diagonal of the lower triangular Cholesky square root of <span class="math inline">\(\Sigma_k\)</span> to be the vector of ones, which relates to a covariance model used in time series analysis. We label as “HOLQ juniors” the class of decompositions that correspond to submodels of the unrestricted mean zero multilinear normal model. In Section <a href="chapter-holq.html#section:LRT">3.3.3</a>, we use HOLQ juniors to develop a class of likelihood ratio tests for covariance models in elliptically contoured random arrays with separable covariance.</p>
+<p>Other tensor decompositions related to the HOLQ are discussed in Section <a href="#section:othertensorz"><strong>??</strong></a>. In Section <a href="chapter-holq.html#section:isvd">3.4.1</a> we use the HOLQ to create a new higher-order analogue to the SVD where each mode has singular values and vectors separated from the core array. Since this SVD is derived from the incredible HOLQ, we call it the incredible SVD (ISVD). The ISVD may be viewed as a core rotation of the HOSVD. In Section <a href="chapter-holq.html#section:ihop">3.4.2</a> we use a novel minimization formulation of the polar decomposition to generalize it to tensors.</p>
+</div>
+<div id="section:holq" class="section level2">
+<h2><span class="header-section-number">3.2</span> The incredible HOLQ</h2>
+Let <span class="math inline">\(X \in \mathbb{R}^{p \times n}\)</span> be of rank <span class="math inline">\(p\)</span> where <span class="math inline">\(p \leq n\)</span>. Recall the LQ decomposition,
+\begin{align*}
+X = LQ,
+\end{align*}
+<p>where <span class="math inline">\(L \in G_{p}^+\)</span>, the set of <span class="math inline">\(p\)</span> by <span class="math inline">\(p\)</span> lower triangular matrices with positive diagonal elements, and <span class="math inline">\(Q^T \in \mathcal{V}_{p,n}\)</span>, the Stiefel manifold of <span class="math inline">\(n\)</span> by <span class="math inline">\(p\)</span> matrices with orthonormal columns. It is common to formulate the LQ decomposition as a Gram-Schmidt orthogonalization of the rows of <span class="math inline">\(X\)</span>. We instead consider an alternative formulation of the LQ decomposition as a minimization problem:</p>
+<strong>Theorem</strong>  Let <span class="math inline">\(\mathcal{G}_{p}^+\)</span> denote the set of <span class="math inline">\(p\)</span> by <span class="math inline">\(p\)</span> lower triangular matrices with positive diagonal elements and unit determinant. Let
+\begin{align}
+\label{eq:lqmin}
+L = argmin_{\tilde{L} \in \mathcal{G}_{p}^+}\|\tilde{L}^{-1}X\|,
+\end{align}
+<p>where <span class="math inline">\(\|\cdot\|\)</span> is the Frobenius norm. Set <span class="math inline">\(\ell = \|L^{-1}X\|\)</span> and <span class="math inline">\(Q = L^{-1}X / \ell\)</span>. Then <span class="math inline">\(X = \ell LQ\)</span> is the LQ decomposition of <span class="math inline">\(X\)</span>.</p>
+<em>proof</em> By the uniqueness of the LQ decomposition <span class="citation">(Proposition 5.2 of Eaton <a href="#ref-eaton1983multivariate">1983</a>)</span>, it suffices to show that <span class="math inline">\(Q\)</span> has orthonormal rows. We have <span class="math inline">\(QQ^T = I_p \Leftrightarrow L^{-1}XX^TL^{-T}/\ell^2 = I_p \Leftrightarrow XX^T = \ell^2LL^T\)</span>. Also note that the solution in (\ref{eq:lqmin}) is equivalent to finding the matrix <span class="math inline">\(\tilde{S}\)</span> that satisfies <span class="math inline">\(\tilde{S} = LL^T = argmin_{S \in \mathcal{S}_{p}^{1}}tr(S^{-1}XX^T)\)</span>, where <span class="math inline">\(\mathcal{S}_{p}^{1}\)</span> is the set of <span class="math inline">\(p\)</span> by <span class="math inline">\(p\)</span> positive definite matrices with unit determinant. If we can show that <span class="math inline">\(\tilde{S} = XX^T / |XX^T|^{1/p}\)</span> then we have shown that <span class="math inline">\(Q\)</span> has orthonormal rows. Using Lagrange multipliers, we must minimize <span class="math inline">\(tr(S^{-1}XX^T) - \lambda\log|S|\)</span> in <span class="math inline">\(S \in \mathcal{S}_{p}^+\)</span>, the set of <span class="math inline">\(p\)</span> by <span class="math inline">\(p\)</span> positive definite matrices, and <span class="math inline">\(\lambda \in \mathbb{R}\)</span>. Equivalently, we could also minimize <span class="math inline">\(tr(VXX^T) - \lambda\log|V|\)</span>, where <span class="math inline">\(V = S^{-1}\)</span>. Temporarily ignoring the symmetry of <span class="math inline">\(V\)</span>, taking derivatives <span class="citation">(chapter 8 of Magnus and Neudecker <a href="#ref-magnus1999matrix">1999</a>)</span> and setting equal to zero we have
+\begin{align*}
+&amp;XX^T - \lambda V^{-1} = 0 \text{ and } |V| = 1\\
+&amp;\Leftrightarrow \lambda V^{-1} = XX^T \text{ and } |V| = 1\\
+&amp;\Leftrightarrow V^{-1} = XX^T / |XX^T|^{1/p} \text{ and } \lambda = |XX^T|^{1/p}\\
+&amp;\Leftrightarrow S = XX^T / |XX^T|^{1/p} \text{ and } \lambda = |XX^T|^{1/p}.
+\end{align*}
+<p>Since <span class="math inline">\(\log|V|\)</span> is strictly concave (Theorem 25 of Chapter 11 of <span class="citation">Magnus and Neudecker (<a href="#ref-magnus1999matrix">1999</a>)</span> or Theorem 7.6.7 of <span class="citation">Horn and Johnson (<a href="#ref-horn2012matrix">2013</a>)</span>), <span class="math inline">\(tr(VXX^T)\)</span> is linear, and <span class="math inline">\(\lambda = |XX^T|^{1/p} &gt; 0\)</span>, we have that <span class="math inline">\(tr(VXX^T) - \lambda\log|V|\)</span> is a convex function in <span class="math inline">\(V\)</span>. Hence, <span class="math inline">\(S = XX^T / |XX^T|^{1/p}\)</span> is a global minimum (c.f. Theorem 13 of Chapter 7 in <span class="citation">Magnus and Neudecker (<a href="#ref-magnus1999matrix">1999</a>)</span>). Since <span class="math inline">\(XX^T / |XX^T|^{1/p}\)</span> is symmetric and positive definite, it is also a global minimum over the space of symmetric positive definite matrices. <span class="math inline">\(\Box\)</span></p>
+<p>In (\ref{eq:lqmin}), we are “dividing out” <span class="math inline">\(L\)</span> from the rows of <span class="math inline">\(X\)</span>. In this way, we can consider the formulation of the LQ decomposition in Theorem <a href="#theorem:lqreform"><strong>??</strong></a> as finding the <span class="math inline">\(L \in \mathcal{G}_{p}^+\)</span> that accounts for the greatest amount of heterogeneity in the rows of <span class="math inline">\(X\)</span>. The goal of accounting for the heterogeneity in each mode of a multidimensional array will lead to our generalization of the LQ decomposition to tensors, where <span class="math inline">\(X \in \mathbb{R}^{p_1\times\cdots\times p_K \times n}\)</span>.</p>
+<strong>Definition</strong> If
+\begin{align}
+\label{eq:arrayopt}
+(L_1,\ldots,L_K) = argmin_{\tilde{L}_k \in \mathcal{G}_{p_k}^+,\ k = 1,\ldots,K}\| (\tilde{L}_1^{-1},\ldots,\tilde{L}_K^{-1},I_n) \cdot X\|
+\end{align}
+then
+\begin{align}
+\label{eq:holq}
+X = \ell (L_1,\ldots,L_K,I_n) \cdot Q
+\end{align}
+<p>is an incredible HOLQ, where <span class="math inline">\(\ell = \| (L_1^{-1},\ldots,L_K^{-1},I_n) \cdot X\|\)</span> and <span class="math inline">\(Q = (L_1^{-1},\ldots, L_K^{-1},I_n) \cdot X / \ell\)</span>.</p>
+Here, <span class="math inline">\((L_1,\ldots,L_K,I_n) \cdot Q\)</span> denotes  of <span class="math inline">\(Q\)</span> by the list of matrices <span class="math inline">\((L_1,\ldots,L_K,I_n)\)</span> <span class="citation">(Silva and Lim <a href="#ref-de2008tensor">2008</a>)</span>, also known as the  <span class="citation">(Kofidis and Regalia <a href="#ref-kofidis2001tensor">2001</a>, <span class="citation">Hoff (<a href="#ref-hoff2011separable">2011</a>)</span>)</span>. That is, if <span class="math inline">\(X = (L_1,\ldots,L_K,I_n) \cdot Q\)</span> then
+\begin{align*}
+X_{[j_1,\ldots,j_K,j_{K+1}]} = \sum_{i_1,\ldots,i_K = 1}^{p_1,\ldots,p_K}Q_{[i_1,\ldots,i_{K},j_{K+1}]}L_{1[j_1,i_1]}\cdots L_{k[j_K,i_K]}.
+\end{align*}
+Multilinear multiplication has the following useful properties: If (\ref{eq:holq}) holds, then
+\begin{align}
+&amp;X_{(k)} = L_kQ_{(k)}(I_n \otimes L_K^T \otimes \cdots \otimes L_{k+1}^T \otimes L_{k-1}^T \otimes \cdots \otimes L_1^T) \text{ and} \label{eq:matricization}\\
+&amp;vec(X) = (I_n \otimes L_K \otimes \cdots \otimes L_1)vec(Q), \label{eq:vectorization}
+\end{align}
+<p>where <span class="math inline">\(X_{(k)}\)</span> is the unfolding of the array <span class="math inline">\(X\)</span> into a <span class="math inline">\(p_k\)</span> by <span class="math inline">\(n\prod_{i \neq k}^Kp_i\)</span> matrix and <span class="math inline">\(vec(X)\)</span> is the unfolding of the array <span class="math inline">\(X\)</span> into a <span class="math inline">\(n\prod_{k=1}^Kp_k\)</span> dimensional vector <span class="citation">(Kolda and Bader <a href="#ref-kolda2009tensor">2009</a>)</span>. We will generally denote <span class="math inline">\(I_n \otimes L_K \otimes \cdots \otimes L_{k+1} \otimes L_{k-1} \otimes \cdots \otimes L_1\)</span> by <span class="math inline">\(L_{-k}\)</span> and denote <span class="math inline">\(\prod_{k=1}^Kp_k\)</span> by <span class="math inline">\(p\)</span>.</p>
+We note that such a minimizing <span class="math inline">\((L_1,\ldots,L_K)\)</span> in (\ref{eq:arrayopt}) may not exist. This is discussed further in Section @ref(section:holq_discussion). When such a minimizer does exist, we may use (\ref{eq:matricization}) and Theorem <a href="#theorem:lqreform"><strong>??</strong></a> to develop a block coordinate descent algorithm <span class="citation">(Tseng <a href="#ref-tseng2001convergence">2001</a>)</span> to solve the minimization problem (\ref{eq:arrayopt}): At iteration <span class="math inline">\(i\)</span>, we fix <span class="math inline">\(L_k\)</span> for <span class="math inline">\(k \neq i\)</span>. We then find the minimizer in <span class="math inline">\(L_i \in \mathcal{G}_{p_i}^+\)</span> of
+\begin{align*}
+\|L_i^{-1}X_{(i)}L_{-i}^{-T}\|,
+\end{align*}
+<p>which, by Theorem <a href="#theorem:lqreform"><strong>??</strong></a> is the <span class="math inline">\(L\)</span> matrix in the LQ decomposition of <span class="math inline">\(X_{(i)}L_{-i}^{-T} = \ell L Q\)</span>. This algorithm is presented in Algorithm <a href="#algorithm:flipflop"><strong>??</strong></a>. A slight improvement on Algorithm <a href="#algorithm:flipflop"><strong>??</strong></a> is presented in Algorithm <a href="#algorithm:holq"><strong>??</strong></a> where we also update the core array <span class="math inline">\(Q\)</span> of the HOLQ while updating the component lower triangular matrices. Unlike Algorithm <a href="#algorithm:flipflop"><strong>??</strong></a>, Algorithm <a href="#algorithm:holq"><strong>??</strong></a> does not require the calculation of the inverse of <span class="math inline">\(L_k\)</span> or the extra matrix multiplication of <span class="math inline">\(X_{(k)}L_{-k}^{-T}\)</span> at each step. A proof of the equivalence between Algorithms <a href="#algorithm:flipflop"><strong>??</strong></a> and <a href="#algorithm:holq"><strong>??</strong></a> can be found in Appendix @ref(section:equiv.flip.holq).</p>
+\begin{algorithm}[h!]
+\caption{Block coordinate descent for the HOLQ.}
+\label{algorithm:flipflop}
+  \begin{algorithmic}
+    \STATE Given $X \in \mathbb{R}^{p_1 \times \cdots \times p_K \times n}$, initialize:
+    \STATE $L_k \leftarrow L_{k0} \in \mathcal{G}_{p_k}^+$ for $k = 1,\ldots,K$.
+    \STATE $\ell \leftarrow \|(L_{10}^{-1},\ldots,L_{K0}^{-1},I_n) \cdot X\|$
+    \REPEAT
+    \FOR{$k \in \{1,\ldots,K\}$}
+    \STATE LQ decomposition of $X_{(k)}L_{-k}^{-T} = LZ^T$
+    \STATE $L_k \leftarrow L / |L|^{1/p_k}$
+    \ENDFOR
+    \UNTIL{Convergence.}
+    \STATE Set $\ell \leftarrow \|(L_1^{-1},\ldots,L_K^{-1},I_n)\cdot X\|$
+    \STATE Set $Q \leftarrow (L_1^{-1},\ldots,L_K^{-1},I_n)\cdot X / \ell$
+    \RETURN $\ell$, $Q$, and $L_k$ for $k = 1,\ldots,K$.
+  \end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[t!]
+\caption{Orthogonalized block coordinate descent for the HOLQ.}
+\label{algorithm:holq}
+  \begin{algorithmic}
+    \STATE Given $X \in \mathbb{R}^{p_1 \times \cdots \times p_K \times n}$, initialize:
+    \STATE $L_k \leftarrow L_{k0} \in \mathcal{G}_{p_k}^+$ for $k = 1,\ldots,K$.
+    \STATE $\ell \leftarrow \|(L_{10}^{-1},\ldots,L_{K0}^{-1},I_n) \cdot X\|$
+    \STATE $Q \leftarrow (L_{10}^{-1},\ldots,L_{K0}^{-1},I_n) \cdot X/\ell$
+    \REPEAT
+    \FOR{$k \in \{1,\ldots,K\}$}
+    \STATE LQ decomposition of $Q_{(k)} = LZ$
+    \STATE $Q_{(k)} \leftarrow Z$
+    \STATE $L_k \leftarrow L_kL$
+    \STATE Re-scale:
+    \begin{description}[noitemsep,nolistsep]
+    \item $\ell \leftarrow \ell |L_k|^{1/p_k} \|Q\|$
+    \item $L_k \leftarrow L_k / |L_k|^{1/p_k}$
+    \item $Q \leftarrow Q/\|Q\|$
+    \end{description}
+    \ENDFOR
+    \UNTIL{Convergence.}
+    \RETURN $\ell$, $Q$, and $L_k$ for $k = 1,\ldots,K$.
+  \end{algorithmic}
+\end{algorithm}
+<p>There are two things to note about these algorithms. First, at each iteration we are reducing the criterion function <span class="math inline">\(\|(L_1^{-1},\ldots,L_K^{-1},I_n)\cdot X\|\)</span>. Second, at each iteration of Algorithm <a href="#algorithm:holq"><strong>??</strong></a>, we are orthonormalizing the rows of the core array, <span class="math inline">\(Q\)</span>. Hence, the core array <span class="math inline">\(Q\)</span> of any fixed point of this algorithm, including that of the HOLQ, must have a property which we call :</p>
+<strong>Definition</strong> A <span class="math inline">\(p_1 \times \cdots \times p_K \times n\)</span> tensor <span class="math inline">\(Q\)</span> is  if
+\begin{align}
+\label{eq:scaledorthonormal}
+Q_{(k)}Q_{(k)}^T = I_{p_k}/p_k \text{ for all } k = 1,\ldots,K.
+\end{align}
+<p><strong>Theorem</strong> Let <span class="math inline">\(X = \ell (L_1,\ldots,L_K,I_n) \cdot Q\)</span> be an incredible HOLQ. Then the core array <span class="math inline">\(Q\)</span> is scaled all-orthonormal.</p>
+<p><em>proof</em> This is a direct consequence of the LQ step in Algorithm <a href="#algorithm:holq"><strong>??</strong></a>. <span class="math inline">\(\Box\)</span></p>
+<p>Note that we divide by <span class="math inline">\(p_k\)</span> in (\ref{eq:scaledorthonormal}) because of the constraint that <span class="math inline">\(\|Q\| = 1\)</span>. This scaled all-orthonormality property generalizes the orthonormal rows property in the LQ decomposition.</p>
+<p>Of course, we could have instead generalized the RQ decomposition, where for <span class="math inline">\(X \in \mathbb{R}^{p\times n}\)</span> we have <span class="math inline">\(X = RZ\)</span> for <span class="math inline">\(R^T \in \mathcal{G}_{p_k}^+\)</span> and <span class="math inline">\(Z^T \in \mathcal{V}_{p,n}\)</span>. For <span class="math inline">\(X \in \mathbb{R}^{p_1\times\cdots\times p_K \times n}\)</span>, if <span class="math inline">\(X = \ell(L_1,\ldots,L_K,I_n)\cdot Q\)</span> is the HOLQ of <span class="math inline">\(X\)</span>, we then take the RQ decomposition of each component <span class="math inline">\(L_k = R_kZ_k\)</span>, and set <span class="math inline">\(r = \ell\|(Z_1,\ldots,Z_K,I_n)\cdot Q\|\)</span> and <span class="math inline">\(Z = \ell(Z_1,\ldots,Z_K,I_n)\cdot Q/r\)</span>, then <span class="math inline">\(X = r(R_1,\ldots,R_K,I_n)\cdot Z\)</span> is a higher-order RQ (HORQ) of <span class="math inline">\(X\)</span>, where <span class="math inline">\(Z\)</span> is scaled all-orthonormal. One could instead have started with a similar minimization formulation of the RQ as we did for the LQ (Theorem <a href="#theorem:lqreform"><strong>??</strong></a>), then generalize to tensors as we did for the HOLQ (\ref{eq:holq}), and one would obtain the same HORQ as the one we derive from the HOLQ.</p>
+</div>
+<div id="section:multnorm" class="section level2">
+<h2><span class="header-section-number">3.3</span> The incredible HOLQ for separable covariance inference</h2>
+<div id="section:MLE" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Maximum likelihood estimation</h3>
+<p>The LQ decomposition of a data matrix has a close relationship to maximum likelihood inference under the multivariate normal model. Assume a data matrix <span class="math inline">\(X \in \mathbb{R}^{p \times n}\)</span> was generated from a <span class="math inline">\(N_{p \times n}(0,I_n \otimes \Sigma)\)</span> distribution for some <span class="math inline">\(\Sigma\)</span> symmetric and positive definite. That is, the columns of <span class="math inline">\(X\)</span> are assumed to be independently distributed <span class="math inline">\(N_p(0,\Sigma)\)</span> random vectors. The MLE of <span class="math inline">\(\Sigma\)</span> is <span class="math inline">\(XX^T/n\)</span>, and so is proportional to <span class="math inline">\(XX^T = LQQ^TL^T = LL^T\)</span>, where <span class="math inline">\(X = LQ\)</span> is the LQ decomposition of <span class="math inline">\(X\)</span>.</p>
+This result carries over to the multilinear normal model (@ref(eq:mult.norm)) using the HOLQ. Assume the data array <span class="math inline">\(X \in \mathbb{R}^{p_1\times\cdots\times p_K \times n}\)</span> follows a multilinear normal model, <span class="math inline">\(X \sim N_{p_1\times\cdots\times p_K \times n}(0,\sigma^2I_n\otimes\Sigma_K\otimes\cdots\otimes\Sigma_1)\)</span>. That is,
+\begin{align}
+\label{eq:multnormmodel}
+&amp;X \overset{d}{=} \sigma(\Sigma_1^{1/2},\ldots,\Sigma_K^{1/2},I_n)\cdot Z,
+\end{align}
+<p>where <span class="math inline">\(Z \in \mathbb{R}^{p_1\times\cdots\times p_K \times n}\)</span> has i.i.d. standard normal entries and <span class="math inline">\(\Sigma_k^{1/2}\)</span> is the lower triangular Cholesky square root matrix of <span class="math inline">\(\Sigma_k\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>. Here, we use the identifiable parameterization of <span class="citation">Gerard and Hoff (<a href="#ref-gerard2015equivariant">2015</a>)</span> where <span class="math inline">\(\Sigma_k \in \mathcal{S}_{p_k}^1\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span> and <span class="math inline">\(\sigma^2 &gt; 0\)</span>. The following theorem shows that the MLE of <span class="math inline">\((\sigma^2,\Sigma_1,\ldots,\Sigma_K)\)</span> can be recovered from the HOLQ of <span class="math inline">\(X\)</span>.</p>
+<p><strong>Theorem</strong>  Let <span class="math inline">\(X = \ell(L_1,\ldots,L_K,I_n)\cdot Q\)</span> be the incredible HOLQ of <span class="math inline">\(X\)</span>. Then under the model (@ref(eq:mult.normmodel))</p>
+<ol style="list-style-type: decimal">
+<li>The MLE of <span class="math inline">\(\Sigma_k\)</span> is <span class="math inline">\(\hat{\Sigma}_k = L_kL_k^T\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>,</li>
+<li>The MLE of <span class="math inline">\(\sigma^2\)</span> is <span class="math inline">\(\hat{\sigma}^2 = \ell^2 / (np)\)</span>,</li>
+<li>The maximized likelihood is equal to
+\begin{align*}
+\left(2 \pi \hat{\sigma}^2\right)^{-np/2}e^{-np/2} = \left(2 \pi \ell^2/(np)\right)^{-np/2}e^{-np/2}.
+\end{align*}</li>
+</ol>
+<em>proof</em> The log-likelihood is proportional to
+\begin{align*}
+\frac{-np}{2}\log\left(\sigma^2\right) - \frac{1}{2\sigma^2} \|(\Sigma_1^{-1/2},\ldots,\Sigma_K^{-1/2},I_n)\cdot X\|^2,
+\end{align*}
+where <span class="math inline">\(\Sigma_k^{1/2}\)</span> is the lower triangular Cholesky square root matrix of <span class="math inline">\(\Sigma_k\)</span>. Holding the <span class="math inline">\(\Sigma_k\)</span>’s fixed, taking a derivative of <span class="math inline">\(\sigma^2\)</span> and setting equal to zero, we solve for <span class="math inline">\(\sigma^2\)</span> and obtain <span class="math inline">\(\hat{\sigma}^2 = \|(\Sigma_1^{-1/2},\ldots,\Sigma_K^{-1/2},I_n)\cdot X\|^2 / (np)\)</span>. A second derivative test confirms this is the global maximizer for any fixed <span class="math inline">\(\Sigma_1,\ldots,\Sigma_K\)</span>. The profiled likelihood is then
+\begin{align}
+\label{eq:maximizedlike}
+&amp;\left(2\pi\hat{\sigma}^2\right)^{-np/2}\exp\left\{-\frac{1}{2\hat{\sigma}^2} \|(\Sigma_1^{-1/2},\ldots,\Sigma_K^{-1/2},I_n)\cdot X\|^2\right\} \nonumber\\
+&amp;=\left(2\pi\hat{\sigma}^2\right)^{-np/2}\exp\left\{-\frac{1}{2\hat{\sigma}^2} \hat{\sigma}^2 np\right\}\nonumber\\
+&amp;=\left(2 \pi \hat{\sigma}^2\right)^{-np/2}e^{-np/2}.
+\end{align}
+<p>Thus, to maximize the likelihood, we must minimize <span class="math inline">\(\hat{\sigma}^2 = \frac{1}{np}\| (\Sigma_1^{-1/2},\ldots, \Sigma_K^{-1/2}, I_n)\cdot X\|^2\)</span> in <span class="math inline">\(\Sigma_k^{1/2} \in \mathcal{G}_{p_k}^+\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>. This is the same as the minimization problem solved by the HOLQ in (\ref{eq:arrayopt}). Hence, the MLE of <span class="math inline">\(\Sigma_k\)</span> is <span class="math inline">\(\hat{\Sigma}_k = L_kL_k^T\)</span>. This in turn implies that <span class="math inline">\(\hat{\sigma}^2 = \|(\hat{\Sigma}_1^{-1/2},\ldots,\hat{\Sigma}_K^{-1/2},I_n)\cdot X\|^2 / (np) = \|(L_1^{-1},\ldots,L_K^{-1},I_n)\cdot X\|^2 / (np) = \ell^2/(np)\)</span>. We may plug <span class="math inline">\(\hat{\sigma}^2 = \ell^2/(np)\)</span> into (\ref{eq:maximizedlike}) to obtain the final part of the theorem. <span class="math inline">\(\Box\)</span></p>
+This relationship with the multilinear normal model extends to any array-variate elliptically contoured model with separable covariance. Using our identifiable parameterization, <span class="math inline">\(X\)</span> is a mean zero elliptically contoured random array with separable covariance if its density has the form
+\begin{align*}
+f(x|\sigma^2,\Sigma_1,\ldots,\Sigma_K) \propto (\sigma^2)^{-p/2}g(\|(\Sigma_1^{-1/2},\ldots,\Sigma_K^{-1/2})\cdot x\|^2/\sigma^2),
+\end{align*}
+<p>for some known <span class="math inline">\(g:\mathbb{R}^+ \rightarrow \mathbb{R}^+\)</span>. Using a general result of <span class="citation">Anderson, Fang, and Hsu (<a href="#ref-anderson1986maximum">1986</a>)</span> (see <a href="#section:appendixanderson"><strong>??</strong></a>), the MLE of <span class="math inline">\(\sigma^2(\Sigma_K \otimes \cdots \otimes \Sigma_1)\)</span> can be shown to be proportional to the MLE under the multilinear normal model. This in turn implies that the MLEs of the component covariance matrices in separable elliptically contoured distributions have the same relationship with the HOLQ as in the multilinear normal model. That is, <span class="math inline">\(\hat{\Sigma}_k = L_kL_k^T\)</span> where <span class="math inline">\(X = \ell(L_1,\ldots,L_K,I_n)\cdot Q\)</span>. Only the estimation of the scale <span class="math inline">\(\sigma^2\)</span> might be different, depending on the function <span class="math inline">\(g\)</span>.</p>
+The MLEs of <span class="math inline">\(\sigma^2\)</span> and the <span class="math inline">\(\Sigma_k\)</span>’s depend only on <span class="math inline">\(\ell\)</span> and the <span class="math inline">\(L_k\)</span>’s, not <span class="math inline">\(Q\)</span>. This suggests that the core array <span class="math inline">\(Q\)</span> might be ancillary with respect to the covariance parameters <span class="math inline">\(\Sigma_1,\ldots,\Sigma_K\)</span> and <span class="math inline">\(\sigma^2\)</span>, that is, the distribution of <span class="math inline">\(Q\)</span> might not depend on the parameter values. In the next paragraph, we will prove that this is indeed the case, but to do so we first introduce a group of transformations that acts transitively on the parameter space. Consider the group
+\begin{align*}
+\mathcal{G} = \{(a,A_1,\ldots,A_K) : a &gt; 0, A_k \in \mathcal{G}_{p_k}^+ \text{ for } k=1,\ldots,K\},
+\end{align*}
+where the group operation is component-wise multiplication. For example, if <span class="math inline">\((a,A_1,\ldots,A_K)\)</span>, <span class="math inline">\((b,B_1,\ldots,B_K)\in \mathcal{G}\)</span>, then we have
+\begin{align*}
+(a,A_1,\ldots,A_K)(b,B_1,\ldots,B_K) = (ab,A_1B_1,\ldots,A_KB_K).
+\end{align*}
+The group acts on the sample space by
+\begin{align*}
+X \mapsto a(A_1,\ldots,A_K,I_n)\cdot X.
+\end{align*}
+<p>The following theorem shows that under this group action, the core array of the HOLQ, if unique, is maximally invariant (uniqueness is discussed briefly in Section @ref(section:holq_discussion)). More generally, this theorem states that the set of core arrays of fixed points from Algorithm <a href="#algorithm:holq"><strong>??</strong></a> is a maximally invariant statistic. In other words, two arrays are in the same orbit of <span class="math inline">\(\mathcal{G}\)</span> if and only if the set of core arrays of fixed points of Algorithm <a href="#algorithm:holq"><strong>??</strong></a> are the same.</p>
+<p><strong>Theorem</strong>  Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be in <span class="math inline">\(\mathbb{R}^{p_1\times\cdots p_K\times n}\)</span>. Let <span class="math inline">\(\mathcal{Q}_X\)</span> and <span class="math inline">\(\mathcal{Q}_Y\)</span> be the set of core arrays from fixed points of Algorithm <a href="#algorithm:holq"><strong>??</strong></a> for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, respectively. Then <span class="math inline">\(\mathcal{Q}_X = \mathcal{Q}_Y\)</span> if and only if there exist <span class="math inline">\(c &gt; 0\)</span> and <span class="math inline">\(C_k \in \mathcal{G}_{p_k}^+\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span> such that <span class="math inline">\(c(C_1,\ldots,C_K,I_n)\cdot X = Y\)</span>.</p>
+<p><em>proof</em> We first prove the “only if” part. Assume that <span class="math inline">\(\mathcal{Q}_X = \mathcal{Q}_Y\)</span>, then we choose one <span class="math inline">\(Q\)</span> in <span class="math inline">\(\mathcal{Q}_X = \mathcal{Q}_Y\)</span>. Then there exists <span class="math inline">\(a,b &gt; 0\)</span> and <span class="math inline">\(A_k,B_k \in \mathcal{G}_{p_k}^+\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span> such that <span class="math inline">\(X = a(A_1,\ldots,A_K,I_n)\cdot Q\)</span> and <span class="math inline">\(Y = b(B_1,\ldots,B_K,I_n)\cdot Q\)</span>. One may set <span class="math inline">\(c = b/a\)</span> and <span class="math inline">\(C_k = B_kA_k^{-1}\)</span> to prove that <span class="math inline">\(c(C_1,\ldots,C_K,I_n) \cdot X = Y\)</span>.</p>
+<p>We now prove the “if” part. Assume there exist <span class="math inline">\(c &gt; 0\)</span> and <span class="math inline">\(C_k \in \mathcal{G}_{p_k}^+\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span> such that <span class="math inline">\(c(C_1,\ldots,C_K,I_n)\cdot X = Y\)</span>. Then for each <span class="math inline">\(Q\)</span> in <span class="math inline">\(\mathcal{Q}_X\)</span> we have that <span class="math inline">\(Y = ca(C_1A_1,\ldots,C_KA_K,I_n)\cdot Q\)</span> for some <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(A_k \in \mathcal{G}_{p_k}^+\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>. Since fixed points are entirely determined by the scaled all-orthonormality of the core, <span class="math inline">\(Q\)</span> is also in <span class="math inline">\(\mathcal{Q}_Y\)</span>. Likewise any <span class="math inline">\(Q\)</span> in <span class="math inline">\(\mathcal{Q}_Y\)</span> will also be in <span class="math inline">\(\mathcal{Q}_X\)</span>. Hence <span class="math inline">\(\mathcal{Q}_X = \mathcal{Q}_Y\)</span>. <span class="math inline">\(\Box\)</span></p>
+By using the above invariance results, we may now prove that <span class="math inline">\(\mathcal{Q}_{X}\)</span> is ancillary. The group <span class="math inline">\(\mathcal{G}\)</span> acts on the parameter space by <span class="citation">(Hoff <a href="#ref-hoff2011separable">2011</a>)</span>
+\begin{align*}
+\sigma^2 \mapsto a^2\sigma^2 \text{ and } \Sigma_k \mapsto A_k\Sigma_kA_k^T.
+\end{align*}
+This action is clearly transitive over the parameter space. Hence, the maximally invariant parameter is a constant. Since the distribution of any invariant statistic depends only on the maximally invariant parameter <span class="citation">(Theorem 6.3.2 of Lehmann and Romano <a href="#ref-lehmann2006testing">2005</a>)</span>, the distribution of <span class="math inline">\(\mathcal{Q}_X\)</span> is ancillary with respect to <span class="math inline">\(\sigma^2\)</span> and <span class="math inline">\(\Sigma_k\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>. If the MLE is unique, then the core array of the HOLQ is in 1-1 correspondence with <span class="math inline">\(\mathcal{Q}_X\)</span>, and so is also maximally invariant. Hence, the core array from a unique HOLQ is ancillary with respect to the covariance parameters, <span class="math inline">\(\Sigma_1,\ldots,\Sigma_K\)</span>, and <span class="math inline">\(\sigma^2\)</span>. This result holds not just for elliptically contoured array-variate models with separable covariance, but also for models of the form
+\begin{align}
+\label{eq:sepcov}
+X \overset{d}{=} \sigma (\Sigma_1^{1/2},\ldots,\Sigma_K^{1/2},I_n)\cdot Z,
+\end{align}
+<p>where <span class="math inline">\(Z\)</span> has a fixed distribution such that <span class="math inline">\(E[Z] = 0\)</span>, <span class="math inline">\(cov(vec(Z)) = I_{np}\)</span>, and <span class="math inline">\(\Sigma_k^{1/2}\)</span> is the lower triangular Cholesky square root of <span class="math inline">\(\Sigma_k\)</span>.</p>
+</div>
+<div id="section:holqjunior" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> HOLQ juniors</h3>
+<p>If it is believed that the dependencies along a mode follow a particular pattern, then from the perspective of parameter estimation, it would make sense to fit a structured covariance matrix that corresponds to the pattern along that mode. For example, if it is believed that the “slices” of the array along a particular mode <span class="math inline">\(k\)</span> are statistically independent, then one would use a model with <span class="math inline">\(\Sigma_k\)</span> restricted to be a diagonal matrix. If the <span class="math inline">\(p_k\)</span> slices along the mode <span class="math inline">\(k\)</span> are believed to be i.i.d., then one could restrict <span class="math inline">\(\Sigma_k\)</span> to be the identity matrix. If one of the modes <span class="math inline">\(k\)</span> corresponded to data gathered over sequential time points, then one could fit <span class="math inline">\(\Sigma_k\)</span> to correspond to an auto-regressive covariance model, such as that of containing constant prediction error variances and arbitrary autoregressive coefficients. One could then restrict <span class="math inline">\(\Sigma_k\)</span> to have its lower triangular Cholesky square root to have unit diagonal <span class="citation">(Pourahmadi <a href="#ref-pourahmadi1999joint">1999</a>)</span>. Each of these alternatives corresponds to fitting a submodel of an unrestricted separable covariance model.</p>
+<p>We represent such submodels mathematically as follows: Partition the index set <span class="math inline">\(\left\{1,\ldots,K\right\}\)</span> into four non-overlapping sets <span class="math inline">\(J_1, J_2, J_3, J_4\)</span>. Let <span class="math inline">\(\mathcal{D}_{p_k}^+\)</span> denote the group of <span class="math inline">\(p_k\)</span> by <span class="math inline">\(p_k\)</span> positive definite diagonal matrices with unit determinant. Also, let <span class="math inline">\(\mathcal{S}_{p_k}^{Ch}\)</span> be the space of <span class="math inline">\(p_k\)</span> by <span class="math inline">\(p_k\)</span> symmetric and positive definite matrices whose lower triangular Cholesky square roots have unit diagonal. Assume the model <span class="math inline">\(X \sim N_{p_1\times\cdots\times p_K}(0,\sigma^2\Sigma_K\otimes\cdots\otimes\Sigma_1)\)</span> where <span class="math inline">\(\Sigma_k\)</span> is in <span class="math inline">\(\mathcal{S}_{p_k}^1\)</span>, <span class="math inline">\(\mathcal{D}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{S}_{p_k}^{Ch}\)</span>, or <span class="math inline">\(\{I_{p_k}\}\)</span> when <span class="math inline">\(k\)</span> is in <span class="math inline">\(J_1\)</span>, <span class="math inline">\(J_2\)</span>, <span class="math inline">\(J_3\)</span>, or <span class="math inline">\(J_4\)</span>, respectively. The collection of sets <span class="math inline">\(J_1, J_2, J_3,\)</span> and <span class="math inline">\(J_4\)</span> corresponds to a submodel where the modes in <span class="math inline">\(J_1\)</span> have unrestricted covariance, the modes in <span class="math inline">\(J_2\)</span> have diagonal covariance, the modes in <span class="math inline">\(J_3\)</span> have constant prediction error variances and arbitrary autoregressive coefficients, and the modes in <span class="math inline">\(J_4\)</span> have independence and homoscedastic covariance structure. If such a submodel represents a close approximation to the truth, then one would expect to obtain better estimates by fitting this submodel than by fitting an unrestricted multilinear normal model.</p>
+<p>%%Similarly, from the array-decomposition perspective, if it is believed that a simpler structure for a component matrix would explain the heterogeneity in a tensor (in terms of least squares (\ref{eq:arrayopt})) approximately as well as a more complex structure, then it would make sense to constrain the component matrix for that mode according to the simpler structure. Some structures to consider for each <span class="math inline">\(L_k\)</span> in (\ref{eq:holq}) is for <span class="math inline">\(L_k\)</span> to be in <span class="math inline">\(\mathcal{G}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{D}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{G}_{p_k}^{Ch}\)</span>, or <span class="math inline">\(\{I_{p_k}\}\)</span>, where <span class="math inline">\(\mathcal{G}_{p_k}^{Ch}\)</span> denotes the set of <span class="math inline">\(p_k\)</span> by <span class="math inline">\(p_k\)</span> lower triangular matrices with unit diagonal. We call a decomposition where we constrain some component matrices to be of a particular structure to be a HOLQ junior.</p>
+<p>In the same way that the HOLQ provides the MLEs in the multilinear normal model, the MLEs in submodels of the unconstrained multilinear normal model are provided by a class of Tucker decompositions we call HOLQ juniors. A HOLQ junior is found by constraining the component matrices in the Tucker decomposition to be in a subspace of <span class="math inline">\(\mathcal{G}_{p_k}^+\)</span>. In particular, we consider constraining each <span class="math inline">\(L_k\)</span> in (\ref{eq:holq}) to be in <span class="math inline">\(\mathcal{G}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{D}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{G}_{p_k}^{Ch}\)</span>, or <span class="math inline">\(\{I_{p_k}\}\)</span>, where <span class="math inline">\(\mathcal{G}_{p_k}^{Ch}\)</span> denotes the set of <span class="math inline">\(p_k\)</span> by <span class="math inline">\(p_k\)</span> lower triangular matrices with unit diagonal.</p>
+<strong>Definition</strong>[HOLQ junior]  Let <span class="math inline">\(\mathcal{G}^{(k)} = \mathcal{G}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{D}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{G}_{p_k}^{Ch}\)</span>, or <span class="math inline">\(\{I_{p_k}\}\)</span> if <span class="math inline">\(k\)</span> is in <span class="math inline">\(J_1\)</span>, <span class="math inline">\(J_2\)</span>, <span class="math inline">\(J_3\)</span>, or <span class="math inline">\(J_4\)</span>, respectively. If
+\begin{align*}
+(L_1,\ldots,L_K) = argmin_{\tilde{L}_k \in \mathcal{G}^{(k)},\ k=1,\ldots,K}\| (\tilde{L}_1^{-1},\ldots,\tilde{L}_K^{-1}) \cdot X\|,
+\end{align*}
+then
+\begin{align}
+\label{eq:holqjunior}
+X = \ell (L_1,\ldots,L_K) \cdot Q
+\end{align}
+<p>is a HOLQ junior, where <span class="math inline">\(\ell = \| (L_1^{-1},\ldots,L_K^{-1}) \cdot X\|\)</span> and <span class="math inline">\(Q = (L_1^{-1},\ldots,L_K^{-1}) \cdot X / \ell\)</span>.</p>
+<p>The core array of a HOLQ junior also has a special structure that we prove in the following theorem.</p>
+<p><strong>Theorem</strong>  Let <span class="math inline">\(X = \ell (L_1,\ldots,L_K) \cdot Q\)</span> be a HOLQ junior (\ref{eq:holqjunior}). Then the core array has the following properties:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Q_{(k)}Q_{(k)}^T = I_{p_k}/p_k\)</span> for all <span class="math inline">\(k \in J_1\)</span>,</li>
+<li><span class="math inline">\(diag\left(Q_{(k)}Q_{(k)}^T\right) = \mathbf{1}_{p_k}/p_k\)</span> for all <span class="math inline">\(k \in J_2\)</span>, where <span class="math inline">\(\mathbf{1}_{p_k} \in \mathbb{R}^{p_k}\)</span> is the vector of <span class="math inline">\(1\)</span>’s, and</li>
+<li><span class="math inline">\(Q_{(k)}Q_{(k)}^T = D_k\)</span> for some diagonal matrix <span class="math inline">\(D_k\)</span> for all <span class="math inline">\(k \in J_3\)</span>.</li>
+</ol>
+<p><em>proof</em> We may update the modes for which <span class="math inline">\(k \in J_1\)</span> using Theorem <a href="#theorem:lqreform"><strong>??</strong></a> the same way we did in Algorithm <a href="#algorithm:holq"><strong>??</strong></a>. The core array of any fixed point must then have the property that <span class="math inline">\(Q_{(k)}Q_{(k)}^T = I_{p_k}/p_k\)</span> for all <span class="math inline">\(k \in J_1\)</span>. The proofs for <span class="math inline">\(k \in J_2\)</span> and <span class="math inline">\(k \in J_3\)</span> follow along the same lines as in the proof for <span class="math inline">\(k \in J_1\)</span>, and are in Appendices <a href="#section:j2holqjunior"><strong>??</strong></a> and <a href="#section:j3holqjunior"><strong>??</strong></a>. <span class="math inline">\(\Box\)</span></p>
+<p>%%In particular, in the square matrix case where <span class="math inline">\(K = 2\)</span>, <span class="math inline">\(p_1 = p_2\)</span>, and <span class="math inline">\(J_3 = \{1,2\}\)</span> (i.e. <span class="math inline">\(L_k \in \mathcal{G}_{p_k}^{Ch}\)</span> for <span class="math inline">\(k = 1,2\)</span>), we have that <span class="math inline">\(X = L_1QL_2^T\)</span>, the LDU decomposition, where the all-orthogonal core <span class="math inline">\(Q\)</span> is a diagonal matrix. We can thus consider the HOLQ junior as not only a generalization of the LQ decomposition for tensors, but also of the LDU decomposition.</p>
+<p>The same arguments as used in Section <a href="chapter-holq.html#section:MLE">3.3.1</a> show that maximum likelihood inference in multilinear normal submodels has a close connection with HOLQ juniors. The proof of the following is very similar to that of Theorem <a href="#theorem:holqmle"><strong>??</strong></a> and is omitted.</p>
+<p><strong>Theorem</strong>  Let <span class="math inline">\(X = \ell(L_1,\ldots,L_K)\cdot Q\)</span> be a HOLQ junior. We assume the model <span class="math inline">\(X \sim N_{p_1\times\cdots\times p_K}(0,\sigma^2\Sigma_K\otimes\cdots\otimes\Sigma_1)\)</span> where <span class="math inline">\(\Sigma_k\)</span> is in <span class="math inline">\(\mathcal{S}_{p_k}^1\)</span>, <span class="math inline">\(\mathcal{D}_{p_k}\)</span>, <span class="math inline">\(\mathcal{S}_{p_k}^{Ch}\)</span>, or <span class="math inline">\(\{I_{p_k}\}\)</span> when <span class="math inline">\(k\)</span> is in <span class="math inline">\(J_1\)</span>, <span class="math inline">\(J_2\)</span>, <span class="math inline">\(J_3\)</span>, or <span class="math inline">\(J_4\)</span>, respectively. We have the following:</p>
+<ol style="list-style-type: decimal">
+<li>The MLE of <span class="math inline">\(\Sigma_k\)</span> is <span class="math inline">\(L_kL_k^T\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>,</li>
+<li>The MLE of <span class="math inline">\(\sigma^2\)</span> is <span class="math inline">\(\ell^2 / (np)\)</span>,</li>
+<li>The maximum of the likelihood is equal to
+\begin{align*}
+\left(2 \pi \hat{\sigma}^2\right)^{-np/2}e^{-np/2} = \left(2 \pi \ell^2/(np)\right)^{-np/2}e^{-np/2}.
+\end{align*}</li>
+</ol>
+We note here that the same group invariance arguments as used in Section <a href="chapter-holq.html#section:MLE">3.3.1</a> prove that the core array from a unique HOLQ junior is ancillary with respect to the covariance parameters in separable covariance models. That is, a core array from a unique HOLQ junior (\ref{eq:holqjunior}) is ancillary under the model
+\begin{align}
+\label{eq:sepcov}
+X = \sigma (\Sigma_1^{1/2},\ldots,\Sigma_K^{1/2})\cdot Z,
+\end{align}
+<p>where <span class="math inline">\(Z\)</span> has a fixed distribution such that <span class="math inline">\(E[Z] = 0\)</span>, <span class="math inline">\(cov(vec(Z)) = I_{p}\)</span>, and <span class="math inline">\(\Sigma_k^{1/2}\)</span> is the lower Cholesky square root of <span class="math inline">\(\Sigma_k\)</span> in <span class="math inline">\(\mathcal{S}_{p_k}^1\)</span>, <span class="math inline">\(\mathcal{D}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{S}_{p_k}^{Ch}\)</span>, or <span class="math inline">\(\{I_{p_k}\}\)</span> when <span class="math inline">\(k\)</span> is in <span class="math inline">\(J_1\)</span>, <span class="math inline">\(J_2\)</span>, <span class="math inline">\(J_3\)</span>, or <span class="math inline">\(J_4\)</span>, respectively. Equivalently, <span class="math inline">\(\Sigma_k^{1/2}\)</span> is in <span class="math inline">\(\mathcal{G}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{D}_{p_k}^+\)</span>, <span class="math inline">\(\mathcal{G}_{p_k}^{Ch}\)</span>, or <span class="math inline">\(\{I_{p_k}\}\)</span> when <span class="math inline">\(k\)</span> is in <span class="math inline">\(J_1\)</span>, <span class="math inline">\(J_2\)</span>, <span class="math inline">\(J_3\)</span>, or <span class="math inline">\(J_4\)</span>, respectively</p>
+</div>
+<div id="section:LRT" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Likelihood ratio testing</h3>
+<p>One would expect to lose efficiency in covariance estimation when fitting a large model when a submodel is a close approximation to the truth. To aid modeling decisions, we develop a class of likelihood ratio tests (LRTs) for comparing nested separable models. For example, a test of independence across slices of mode <span class="math inline">\(k\)</span> would correspond to <span class="math inline">\(H_0: \Sigma_k \in \mathcal{D}_{p_k}^+\)</span> versus <span class="math inline">\(H_1: \Sigma_k \in \mathcal{S}_{p_k}^1\)</span>. A test for independence and heteroscedasticity against independence and homoscedasticity along mode <span class="math inline">\(k\)</span> would correspond to <span class="math inline">\(H_0: \Sigma_k = I_{p_k}\)</span> versus <span class="math inline">\(H_1: \Sigma_k \in \mathcal{D}_{p_k}^+\)</span>. In a longitudinal setting, testing for the presence of non-zero autoregressive coefficients along mode <span class="math inline">\(k\)</span> would correspond to <span class="math inline">\(H_0: \Sigma_k = I_{p_k}\)</span> versus <span class="math inline">\(H_1: \Sigma_k \in \mathcal{S}_{p_k}^{Ch}\)</span>. As seen in Section <a href="chapter-holq.html#section:holqjunior">3.3.2</a>, each submodel of the unstructured multilinear normal model corresponds to a HOLQ junior. If we have two models <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>, with <span class="math inline">\(H_0\)</span> nested in <span class="math inline">\(H_1\)</span>, then the likelihood ratio test takes on the simple form of the ratio of the two scale estimates of the HOLQ juniors corresponding to <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>.</p>
+<p><strong>Theorem</strong>  Suppose <span class="math inline">\(H_0\)</span> is a submodel of <span class="math inline">\(H_1\)</span>. Suppose <span class="math inline">\(vec(X) = \ell(L_K\otimes\cdots\otimes L_1)vec(Q)\)</span> and <span class="math inline">\(vec(X) = a(A_M\otimes\cdots\otimes A_1)vec(Z)\)</span> are two HOLQ juniors in vectorized form (\ref{eq:vectorization}) corresponding to <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>, respectively. Hence, <span class="math inline">\(\hat{\sigma}_0^2 = \ell^2/p\)</span> and <span class="math inline">\(\hat{\sigma}_1^2 = a^2/p\)</span> are the MLEs of the scale parameters under <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>, respectively. Then the LRT of <span class="math inline">\(H_0\)</span> versus <span class="math inline">\(H_1\)</span> rejects for large values of <span class="math inline">\(\hat{\sigma}_0^2/\hat{\sigma}_1^2\)</span>, or equivalently <span class="math inline">\(\ell / a\)</span>.</p>
+<em>proof</em> Applying Theorem 1 from <span class="citation">Anderson, Fang, and Hsu (<a href="#ref-anderson1986maximum">1986</a>)</span> and Theorem <a href="#theorem:mleholqjunior"><strong>??</strong></a> (see <a href="#section:appendixanderson"><strong>??</strong></a>), the LRT rejects for large values of
+\begin{align*}
+\hat{\sigma}_1^{-p} / \hat{\sigma}_0^{-p} = a^{-p}/\ell^{-p} = \ell^p/a^p,
+\end{align*}
+<p>or, equivalently, for large values of <span class="math inline">\(\ell / a\)</span>. <span class="math inline">\(\Box\)</span></p>
+<p>The LRT in Theorem <a href="#theorem:lrtstat"><strong>??</strong></a> includes testing for a Kronecker structured covariance matrix along modes <span class="math inline">\(k\)</span> and <span class="math inline">\(j\)</span> against an unrestricted covariance matrix along the concatenated modes of <span class="math inline">\(k\)</span> and <span class="math inline">\(j\)</span>. That is, it allows for the test <span class="math inline">\(H_0: \Sigma_{kj} = \Sigma_k \otimes \Sigma_j\)</span> for <span class="math inline">\(\Sigma_k \in \mathcal{S}_{p_k}^1\)</span> and <span class="math inline">\(\Sigma_j \in \mathcal{S}_{p_j}^1\)</span> versus <span class="math inline">\(H_1: \Sigma_{ij} \in \mathcal{S}_{p_kp_j}^1\)</span>. This is why <span class="math inline">\(M\)</span> may be different from <span class="math inline">\(K\)</span>. For example, if all modes in <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span> had the same covariance structure except modes <span class="math inline">\(k\)</span> and <span class="math inline">\(j\)</span>, for which <span class="math inline">\(H_0\)</span> assumes has separable covariance and for which <span class="math inline">\(H_1\)</span> assumes has unstructured covariance along the concatenated mode <span class="math inline">\(kj\)</span>, then <span class="math inline">\(M = K-1\)</span>. This particular type of test is useful for determining how much separability is reasonable to assume in a covariance matrix.</p>
+<p>The likelihood ratio test has a nice intuitive interpretation. Since the MLE of <span class="math inline">\(\sigma^2\)</span> under <span class="math inline">\(H_0\)</span> is <span class="math inline">\(\hat{\sigma}_0^2 = \ell^2/p = \|(L_1^{-1},\ldots,L_K^{-1})\cdot X\|^2/p\)</span> (Theorem <a href="#theorem:mleholqjunior"><strong>??</strong></a>), one can consider <span class="math inline">\(\hat{\sigma}_0^2\)</span> as a sort of mean squares left after accounting for covariance/heterogeneity along modes <span class="math inline">\(1,\ldots,K\)</span>. Likewise <span class="math inline">\(\hat{\sigma}_1^2\)</span> is a sort of mean squares left after accounting for covariance/heterogeneity along modes <span class="math inline">\(1,\ldots,M\)</span>. The likelihood ratio test rejects the null when we can explain significantly more heterogeneity in <span class="math inline">\(X\)</span> by increasing the complexity of the covariance structure.</p>
+<p>For many hypothesis tests, the distribution of <span class="math inline">\(p\left(\log\left(\ell^2\right) - \log\left(a^2\right)\right)\)</span>, the log-likelihood ratio statistic, can be approximated by a <span class="math inline">\(\chi^2\)</span> distribution. However, this asymptotic approximation would be suspect for small sample sizes. We propose using a Monte Carlo approximation to the null distribution of the LRT statistic. This Monte Carlo approximation can be made arbitrarily precise. The following theorem, whose proof is in Appendix <a href="#section:proofthmlrt"><strong>??</strong></a>, suggests how to sample from the null distribution of the LRT statistic, <span class="math inline">\(\ell / a\)</span>, or <span class="math inline">\(\hat{\sigma}_0/\hat{\sigma}_1\)</span>, in Theorem <a href="#theorem:lrtstat"><strong>??</strong></a>.</p>
+<p><strong>Theorem</strong>  Under <span class="math inline">\(H_0\)</span>, the distribution of <span class="math inline">\(\ell/a\)</span> in Theorem <a href="#theorem:lrtstat"><strong>??</strong></a> does not depend on the parameter values <span class="math inline">\(\Sigma_1,\ldots,\Sigma_K,\)</span> and <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>This property of the LRT statistic was noted by <span class="citation">Lu and Zimmerman (<a href="#ref-lu2005likelihood">2005</a>)</span> for the matrix-normal case. An immediate implication of Theorem <a href="#theorem:lrtdist"><strong>??</strong></a> is that for tests of these covariance models, a Monte Carlo sample of the LRT statistic under <span class="math inline">\(H_0\)</span> can be made by simulating values of <span class="math inline">\(\ell/a\)</span> under <span class="math inline">\(H_0\)</span>. A single value of <span class="math inline">\(\ell/a\)</span> may be simulated from <span class="math inline">\(H_0\)</span> as follows:</p>
+<ol style="list-style-type: decimal">
+<li>sample <span class="math inline">\(x \sim N_{p}\left(0,I_{p}\right)\)</span>,</li>
+<li>construct <span class="math inline">\(X_1 \in \mathbb{R}^{p_1 \times \cdots \times p_K}\)</span> and <span class="math inline">\(X_2 \in \mathbb{R}^{q_1\times \cdots \times q_M}\)</span> from <span class="math inline">\(x\)</span>,</li>
+<li>calculate HOLQ juniors <span class="math inline">\(X_1 = \ell(L_1,\ldots,L_K)\cdot Q\)</span> and <span class="math inline">\(X_2 = a(A_1,\ldots, A_M)\cdot Z\)</span>,</li>
+<li>calculate <span class="math inline">\(\ell/a\)</span>.</li>
+</ol>
+</div>
+</div>
+<div id="section:othertensor" class="section level2">
+<h2><span class="header-section-number">3.4</span> Other tensor decompositions</h2>
+<div id="section:isvd" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> The incredible SVD</h3>
+<p>The incredible HOLQ (\ref{eq:holq}) may be used to derive a higher-order analogue to the SVD that is related to the HOSVD of <span class="citation">L. De Lathauwer, De Moor, and Vandewalle (<a href="#ref-de2000multilinear">2000</a><a href="#ref-de2000multilinear">a</a>)</span> and <span class="citation">L. De Lathauwer, De Moor, and Vandewalle (<a href="#ref-de2000best">2000</a><a href="#ref-de2000best">b</a>)</span>. From (\ref{eq:holq}), we take the SVD of each component lower triangular matrix, <span class="math inline">\(L_k = U_kD_kV_k^T\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>. Letting <span class="math inline">\(V = (V_1^T,\ldots,V_K^T,I_n) \cdot Q\)</span>, we now have an exact decomposition of the data array <span class="math inline">\(X\)</span> which may be viewed as a higher-order generalization of the SVD.</p>
+<strong>Definition</strong>  Suppose
+\begin{align}
+\label{eq:ISVD}
+X = \ell (U_1,\ldots,U_K,I_n) \cdot [(D_1,\ldots,D_K,I_n) \cdot V]
+\end{align}
+<p>such that</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\ell \geq 0\)</span>,</li>
+<li><span class="math inline">\(U_k \in \mathcal{O}_{p_k}\)</span>, the set of <span class="math inline">\(p_k\)</span> by <span class="math inline">\(p_k\)</span> orthogonal matrices, for all <span class="math inline">\(k = 1,\ldots,K\)</span>,</li>
+<li><span class="math inline">\(D_k \in \mathcal{D}_{p_k}^+\)</span>, for all <span class="math inline">\(k = 1,\ldots,K\)</span>, and</li>
+<li><span class="math inline">\(V\)</span> is scaled all-orthonormal.</li>
+</ol>
+<p>Then we say that (\ref{eq:ISVD}) is an incredible SVD (ISVD).</p>
+<p>The ISVD can be seen as a type of “core rotation” <span class="citation">(Kolda and Bader <a href="#ref-kolda2009tensor">2009</a>)</span> of the HOSVD. The core is rotated to a form where we may separate the “mode specific singular values”, <span class="math inline">\(D_1,\ldots,D_K\)</span>, from the core. Where the core array in the HOSVD is all-orthogonal (the mode-<span class="math inline">\(k\)</span> unfolding contains orthogonal, but not necessarily orthonormal, rows for all <span class="math inline">\(k = 1,\ldots,K\)</span>), the core array in the ISVD is scaled all-orthonormal.</p>
+A low rank version of the ISVD can be defined by finding, for <span class="math inline">\(r_k \leq p_k\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>, the <span class="math inline">\(U_k \in \mathcal{V}_{r_k,p_k}\)</span>, <span class="math inline">\(D_k \in \mathcal{D}_{r_k}^+\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>, <span class="math inline">\(\ell &gt; 0\)</span>, and <span class="math inline">\(V \in \mathbb{R}^{r_1\times\cdots\times r_K \times n}\)</span> that minimize
+\begin{align}
+\label{eq:fnorm}
+\|X - \ell (U_1,\ldots,U_K,I_n) \cdot [(D_1,\ldots,D_K,I_n) \cdot V]\|^2.
+\end{align}
+We can apply the HOOI <span class="citation">(higher-order orthogonal iteration of L. De Lathauwer, De Moor, and Vandewalle <a href="#ref-de2000best">2000</a><a href="#ref-de2000best">b</a>)</span> to obtain the minimizer of (\ref{eq:fnorm}). Let <span class="math inline">\(X = (V_1,\ldots,V_K,I_n) \cdot S\)</span> be the HOOI of <span class="math inline">\(X\)</span>. This minimizes
+\begin{align*}
+\|X - (V_1,\ldots,V_K,I_n) \cdot S\|^2,
+\end{align*}
+<p>for arbitrary core array <span class="math inline">\(S \in \mathbb{R}^{r_1\times\cdots\times r_K,n}\)</span> and arbitrary <span class="math inline">\(V_k \in \mathcal{V}_{r_k,p_k}\)</span>. We now take the ISVD of <span class="math inline">\(S = \ell (W_1,\ldots,W_K,I_n) \cdot [(D_1,\ldots,D_K,I_n) \cdot V]\)</span>. We set <span class="math inline">\(U_k = V_kW_k\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>. These values now minimize (\ref{eq:fnorm}). The truncated ISVD does not improve the fit of the low rank array to the data array over the HOOI. Rather, the truncated ISVD can be seen as a core rotation of the HOOI, the same as how the ISVD can be seen as a core rotation of the HOSVD. Again, the core is rotated to a form where we may separate the mode specific singular values, <span class="math inline">\(D_1,\ldots,D_K\)</span>, from the core.</p>
+</div>
+<div id="section:ihop" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> The IHOP decomposition</h3>
+In this section, we explore how our minimization approach may lead to another novel Tucker decomposition. Let <span class="math inline">\(X\)</span> be a <span class="math inline">\(p\)</span> by <span class="math inline">\(n\)</span> matrix with <span class="math inline">\(p \leq n\)</span> such that <span class="math inline">\(X\)</span> is of rank <span class="math inline">\(p\)</span>. We may write <span class="math inline">\(X\)</span> as
+\begin{align*}
+X = PW,
+\end{align*}
+<p>where <span class="math inline">\(P \in \mathcal{S}_{p}^+\)</span> and <span class="math inline">\(W^T \in \mathcal{V}_{p,n}\)</span>. This is known as the (left)  (see, for example, Proposition 5.5 of <span class="citation">Eaton (<a href="#ref-eaton1983multivariate">1983</a>)</span>). Following the theme of this chapter, we reformulate the polar decomposition as a minimization problem. Let <span class="math inline">\(\mathcal{S}_{p}^F\)</span> denote the space of <span class="math inline">\(p\)</span> by <span class="math inline">\(p\)</span> positive definite matrices with unit trace.</p>
+<strong>Theorem</strong>  Let
+\begin{align}
+\label{eq:polarmin}
+P = argmin_{\tilde{P} \in \mathcal{S}_{p}^F} tr(\tilde{P}^{-1}XX^T).
+\end{align}
+Set <span class="math inline">\(\ell = \|P^{-1}X\|\)</span> and <span class="math inline">\(W = P^{-1}X/\ell\)</span>. Then
+\begin{align*}
+X = \ell P W
+\end{align*}
+<p>is the polar decomposition of <span class="math inline">\(X\)</span>.</p>
+<em>proof</em> By the uniqueness of the polar decomposition <span class="citation">(Proposition 5.5 of Eaton <a href="#ref-eaton1983multivariate">1983</a>)</span>, it suffices to show that <span class="math inline">\(W\)</span> has orthonormal rows. We have that <span class="math inline">\(WW^T = I_{p} \Leftrightarrow P^{-1}XX^TP^{-1}/\ell^2 = I_p \Leftrightarrow XX^T = \ell^2PP\)</span>. Hence, if we can show that <span class="math inline">\(PP \propto XX^T\)</span> then we have shown that <span class="math inline">\(W\)</span> has orthonormal rows. Using Lagrange multipliers, we must minimize <span class="math inline">\(tr(P^{-1}XX^T) + \lambda(tr(P) - 1)\)</span>. This is equivalent to minimizing <span class="math inline">\(tr(VXX^T) + \lambda(tr(V^{-1}) - 1)\)</span> where <span class="math inline">\(V = P^{-1}\)</span>. Temporarily ignoring the symmetry, taking derivatives, and setting equal to <span class="math inline">\(0\)</span>, we have
+\begin{align*}
+&amp;XX^T - \lambda V^{-1}V^{-1}  = 0 \text{ and } tr(V^{-1}) = 1\\
+&amp;\Leftrightarrow XX^T = \lambda V^{-1}V^{-1} \text{ and } tr(V^{-1}) = 1\\
+&amp;\Rightarrow V^{-1} = (XX^T)^{1/2} / tr((XX^T)^{1/2}) \text{ and } \lambda = tr((XX^T)^{1/2})^2\\
+&amp;\Rightarrow P = (XX^T)^{1/2} / tr((XX^T)^{1/2}) \text{ and } \lambda = tr((XX^T)^{1/2})^2,
+\end{align*}
+<p>where <span class="math inline">\((XX^T)^{1/2}\)</span> is any square root matrix of <span class="math inline">\(XX^T\)</span>. Let <span class="math inline">\((XX^T)^{1/2}\)</span> now be the unique symmetric square root matrix of <span class="math inline">\(XX^T\)</span>, which is a critical point of <span class="math inline">\(tr(VXX^T) + \lambda(tr(V^{-1}) - 1)\)</span> over the space of positive definite matrices. From problem 2 of Section 7.6 in <span class="citation">Horn and Johnson (<a href="#ref-horn2012matrix">2013</a>)</span>, we have that <span class="math inline">\(tr(V^{-1})\)</span> is strictly convex on the set of positive definite matrices. Since <span class="math inline">\(\lambda = tr((XX^T)^{1/2})^2 &gt; 0\)</span>, we have that <span class="math inline">\(tr(VXX^T) + \lambda(tr(V^{-1}) - 1)\)</span> is a convex function for all positive definite <span class="math inline">\(V\)</span>. Therefore <span class="math inline">\(P = (XX^T)^{1/2} / tr((XX^T)^{1/2})\)</span> is a global minimum (c.f. Theorem 13 of Chapter 7 in <span class="citation">Magnus and Neudecker (<a href="#ref-magnus1999matrix">1999</a>)</span>). <span class="math inline">\(\Box\)</span></p>
+<p>For <span class="math inline">\(X \in \mathbb{R}^{p_1\times\cdots\times p_K \times n}\)</span>, we now define the incredible higher-order polar decomposition (IHOP).</p>
+<strong>Definition</strong> If
+\begin{align}
+\label{eq:ihopmin}
+(P_1,\ldots,P_K) = argmin_{P_k\in\mathcal{S}_{p_k}^F, k = 1,\ldots,K} tr[(P_K^{-1}\otimes\cdots\otimes P_1^{-1})X_{(K+1)}^TX_{(K+1)}],
+\end{align}
+then
+\begin{align*}
+X = \ell(P_1,\ldots,P_K,I_n)\cdot W
+\end{align*}
+<p>is an IHOP, where <span class="math inline">\(\ell = \|(P_1^{-1},\ldots,P_K^{-1},I_n)\cdot X\|\)</span> and <span class="math inline">\(W = (P_1^{-1},\ldots,P_K^{-1},I_n)\cdot X / \ell\)</span>.</p>
+Let <span class="math inline">\(\mathcal{G}_{p}^F\)</span> be the space of lower triangular matrices with positive diagonal elements and unit Frobenius norm. To derive a block coordinate descent algorithm to find the solution to (\ref{eq:ihopmin}), we note that (\ref{eq:polarmin}) is equivalent to finding the <span class="math inline">\(L \in \mathcal{G}_{p}^F\)</span> such that
+\begin{align*}
+L = argmin_{\tilde{L}\in\mathcal{G}_{p}^F}\|\tilde{L}^{-1}X\|,
+\end{align*}
+and then setting <span class="math inline">\(P = LL^T\)</span> for <span class="math inline">\(P\)</span> from (\ref{eq:polarmin}). Hence, (\ref{eq:ihopmin}) is equivalent to finding <span class="math inline">\(L_k \in \mathcal{G}_{p_k}^F\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span> such that
+\begin{align}
+(L_1,\ldots,L_K) = argmin_{\tilde{L}_k\in\mathcal{G}_{p_k}^F, k = 1,\ldots,K}\|(\tilde{L}_1^{-1},\ldots,\tilde{L}_K^{-1},I_n)\cdot X\|,
+\end{align}
+then setting <span class="math inline">\(P_k = L_kL_k^T\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>. At iteration <span class="math inline">\(i\)</span>, fix <span class="math inline">\(L_k\)</span> for <span class="math inline">\(k \neq i\)</span>. We then find the minimizer in <span class="math inline">\(L_i \in \mathcal{G}_{p_i}^F\)</span> of
+\begin{align*}
+\|L_i^{-1}X_{(i)}L_{-i}^{-T}\| = tr(P_i^{-1}X_{(i)}P_{-i}^{-1}X_{(i)}^T),
+\end{align*}
+<p>which, by Theorem <a href="#theorem:polarmin"><strong>??</strong></a> is <span class="math inline">\(L \in \mathcal{G}_{p_k}^F\)</span> such that <span class="math inline">\(LL^TW = X_{(i)}L_{-i}^{-1}\)</span> is the polar decomposition of <span class="math inline">\(X_{(i)}L_{-i}^{-1}\)</span>. This algorithm is presented in Algorithm <a href="#algorithm:ihop"><strong>??</strong></a>. Again following the theme in this chapter, we present a slightly improved algorithm in Algorithm <a href="#algorithm:pancake"><strong>??</strong></a>. A proof that Algorithm <a href="#algorithm:ihop"><strong>??</strong></a> and Algorithm <a href="#algorithm:pancake"><strong>??</strong></a> are equivalent can be found in Appendix <a href="#section:proofihoppancake"><strong>??</strong></a>. From the Algorithm <a href="#algorithm:pancake"><strong>??</strong></a>, we see that any fixed point of <span class="math inline">\(R\)</span> in Algorithm <a href="#algorithm:pancake"><strong>??</strong></a> must have the property that <span class="math inline">\(R_{(k)} = L_kZ\)</span> for the current value of <span class="math inline">\(L_k\)</span> and some <span class="math inline">\(Z\)</span> with orthonormal rows. % The IHOP may be found from the ISVD by setting <span class="math inline">\(P_k = U_kD_kU_k^T/tr(U_kD_kU_k^T)\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>, <span class="math inline">\(W = (U_1,\ldots,U_K,I_n)\cdot V\)</span>, and adjusting the scale appropriately.</p>
+\begin{algorithm}[h!]
+\caption{Block coordinate descent for the IHOP.}
+\label{algorithm:ihop}
+  \begin{algorithmic}
+    \STATE Given $X \in \mathbb{R}^{p_1 \times \cdots \times p_K \times n}$, initialize:
+    \STATE $L_k \leftarrow L_{k0} \in \mathcal{G}_{p_k}^F$ for $k = 1,\ldots,K$.
+    \REPEAT
+    \FOR{$k \in \{1,\ldots,K\}$}
+    \STATE Polar decomposition of $X_{(k)}L_{-k}^{-1} = PZ^T$
+    \STATE Cholesky decomposition of $P = LL^T$
+    \STATE $L_k \leftarrow L / \|L\|$
+    \ENDFOR
+    \UNTIL{Convergence.}
+    \STATE Set $P_k \leftarrow L_kL_k^T$ for $k = 1,\ldots,K$
+    \STATE Set $\ell \leftarrow \|(P_1^{-1},\ldots,P_K^{-1},I_n)\cdot X\|$
+    \STATE Set $W \leftarrow (P_1^{-1},\ldots,P_K^{-1},I_n)\cdot X / \ell$
+    \RETURN $\ell$, $W$, and $P_k$ for $k = 1,\ldots,K$.
+  \end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[ht!]
+\caption{Orthogonalized block coordinate descent for the IHOP.}
+\label{algorithm:pancake}
+\begin{algorithmic}
+    \STATE Given $X \in \mathbb{R}^{p_1 \times \cdots \times p_K \times n}$, initialize:
+    \STATE $L_k \leftarrow L_{k0} \in \mathcal{G}_{p_k}^F$ for $k = 1,\ldots,K$.
+    \STATE $\ell \leftarrow \|(L_1^{-1},\ldots,L_K^{-1},I_n)\cdot X\|$
+    \STATE $R \leftarrow (L_1^{-1},\ldots,L_K^{-1},I_n)\cdot X / \ell$
+    \REPEAT
+    \FOR{$k \in \{1,\ldots,K\}$}
+    \STATE Polar decomposition of $L_kR_{(k)} = PZ$
+    \STATE Cholesky decomposition of $P = LL^T$
+    \STATE Set $R_{(k)} \leftarrow L^TZ$
+    \STATE Set $L_k \leftarrow L$
+    \STATE Re-scale:
+    \begin{description}[noitemsep,nolistsep]
+    \item $\ell \leftarrow \ell \|L_k\| \|R\|$
+    \item $L_k \leftarrow L_k / \|L_k\|$
+    \item $R \leftarrow R/\|R\|$
+    \end{description}
+    \ENDFOR
+    \UNTIL{Convergence.}
+    \STATE Set $P_k \leftarrow L_kL_k^T$ for $k = 1,\ldots,K$
+    \STATE Set $\ell \leftarrow \|(L_1^{-1},\ldots,L_K^{-1})\cdot R\|$
+    \STATE Set $W = (L_1^{-1},\ldots,L_K^{-1})\cdot R / \ell$
+    \RETURN $\ell$, $W$, and $P_k$ for $k = 1,\ldots,K$.
+\end{algorithmic}
+\end{algorithm}
+</div>
+</div>
+<div id="section:holq_discussion" class="section level2">
+<h2><span class="header-section-number">3.5</span> Discussion</h2>
+<p>In this chapter, we have presented a higher-order generalization of the LQ decomposition by reformulating the LQ decomposition as a minimization problem. The orthonormal rows property of the <span class="math inline">\(Q\)</span> matrix in the LQ decomposition generalizes to the scaled all-orthonormal property of the mode-<span class="math inline">\(k\)</span> unfoldings of the core array in the HOLQ. We generalized the HOLQ to HOLQ juniors by constraining the component matrices to subspaces of <span class="math inline">\(\mathcal{G}_{p_k}^+\)</span>. One application of the HOLQ (junior) is for estimation and testing in separable covariance models. The MLEs of the covariance parameters may be recovered from the HOLQ (junior) and the likelihood ratio test has the simple form of the ratio of two scale estimates from the HOLQ junior. The core array from the HOLQ (junior) is ancillary with respect to the covariance parameters.</p>
+We also used the HOLQ to develop a higher-order generalization of the SVD. Our version of the SVD can be viewed as a core rotation for the HOSVD (full rank case) or the HOOI (low rank case), where the core is rotated so that the mode specific singular values may be separated from the core array. We note that one can consider the model of <span class="citation">Hoff (<a href="#ref-hoff2013equivariant">2013</a>)</span> as a model based truncated ISVD. He considered the model
+\begin{align*}
+&amp;X \sim N_{p_1\times\cdots\times p_K}((U_1,\ldots,U_K,I_n) \cdot [(D_1,\ldots,D_K,I_n) \cdot V],\sigma^2I_p), \text{ where:}\\
+&amp;U_k \text{ is uniformly distributed on } \mathcal{V}_{r_k,p_k},\\
+&amp;D_k \text{ has trace 1 and is uniformly distributed on the } r_k \text{ simplex},\\
+&amp;V \sim N_{r_1\times\cdots\times r_K}(0,\tau^2I_r), \text{ and}\\
+&amp;\tau^2 \sim \text{inverse-gamma}(1/2,\tau_0^2/2),
+\end{align*}
+<p>where we changed the notation from his paper to make more clear the connection to the ISVD. In such a model, the core <span class="math inline">\(V\)</span> is scaled all-orthonormal in expectation. That is, <span class="math inline">\(E[V_{(k)}V_{(k)}^T] \propto I_{p_k}\)</span> for all <span class="math inline">\(k=1,\ldots,K\)</span>. One could extend his results by selecting a prior that allows for non-zero mass for the <span class="math inline">\(D_k\)</span> to be of low rank, as in <span class="citation">Hoff (<a href="#ref-hoff2007model">2007</a>)</span> for his model based SVD.</p>
+<p>A clear limitation to the utility or the HOLQ or ISVD in practice is that in some dimensions they may not exist, and in other dimensions where they do exist, they may not be unique. The necessary and sufficient conditions for the existence and uniqueness of the HOLQ are not known. Sufficient conditions for existence and uniqueness occur when <span class="math inline">\(n\)</span> is large. When <span class="math inline">\(n \geq p\)</span>, the criterion function, <span class="math inline">\(\| (L_1^{-1},\ldots,L_K^{-1},I_n) \cdot X\|\)</span>, is bounded below by the value at the LQ decomposition. For <span class="math inline">\(n\)</span> large enough, the HOLQ is also unique, this follows from the uniqueness of the MLE from <span class="citation">Ohlson, Rauf Ahmad, and Rosen (<a href="#ref-ohlson2013multilinear">2013</a>)</span>. These conditions are equivalently sufficient for the existence and uniqueness of the ISVD. However, in the author’s experience, the HOLQ exists and is unique for many dimensions where <span class="math inline">\(n &lt; p\)</span>, indeed for many dimensions where <span class="math inline">\(n = 1\)</span>. In cases where the HOLQ/ISVD do not exist, the model of <span class="citation">Hoff (<a href="#ref-hoff2013equivariant">2013</a>)</span> would be a good alternative. One could also construct a regularized version of the HOLQ.</p>
+<p>We note, however, that when a  minimum is reached, then the HOLQ exists. This is due to the geodesic convexity results of the log-likelihood in <span class="citation">Wiesel (<a href="#ref-wiesel2012geodesic">2012</a><a href="#ref-wiesel2012geodesic">a</a>)</span> and <span class="citation">Wiesel (<a href="#ref-wiesel2012convexity">2012</a><a href="#ref-wiesel2012convexity">b</a>)</span>. That is, any local minimum is also a global minimum. These results indicate that, for any particular data set, we can determine if any global minima exist.</p>
+
+</div>
+</div>
+<h3><span class="header-section-number">7</span> References</h3>
+<div id="refs" class="references">
+<div id="ref-kolda2009tensor">
+<p>Kolda, Tamara G., and Brett W. Bader. 2009. “Tensor Decompositions and Applications.” <em>SIAM Rev.</em> 51 (3): 455–500. doi:<a href="https://doi.org/10.1137/07070111X">10.1137/07070111X</a>.</p>
+</div>
+<div id="ref-cichockitensor">
+<p>Cichocki, A, D Mandic, C Caiafa, AH Phan, G Zhou, Q Zhao, and L De Lathauwer. 2014. “Tensor Decompositions for Signal Processing Applications.” <em>From Two-Way to Multiway Component Analysis, ESAT-STADIUS Internal Report</em>, 13–235.</p>
+</div>
+<div id="ref-tucker1966some">
+<p>Tucker, Ledyard R. 1966. “Some Mathematical Notes on Three-Mode Factor Analysis.” <em>Psychometrika</em> 31: 279–311.</p>
+</div>
+<div id="ref-de2000multilinear">
+<p>De Lathauwer, Lieven, Bart De Moor, and Joos Vandewalle. 2000a. “A Multilinear Singular Value Decomposition.” <em>SIAM J. Matrix Anal. Appl.</em> 21 (4): 1253–78 (electronic). doi:<a href="https://doi.org/10.1137/S0895479896305696">10.1137/S0895479896305696</a>.</p>
+</div>
+<div id="ref-de2000best">
+<p>De Lathauwer, Lieven, Bart De Moor, and Joos Vandewalle. 2000b. “On the Best Rank-1 and Rank-<span class="math inline">\((R_1,R_2,\cdots,R_N)\)</span> Approximation of Higher-Order Tensors.” <em>SIAM J. Matrix Anal. Appl.</em> 21 (4): 1324–42 (electronic). doi:<a href="https://doi.org/10.1137/S0895479898346995">10.1137/S0895479898346995</a>.</p>
+</div>
+<div id="ref-de2008tensor">
+<p>Silva, Vin de, and Lek-Heng Lim. 2008. “Tensor Rank and the Ill-Posedness of the Best Low-Rank Approximation Problem.” <em>SIAM J. Matrix Anal. Appl.</em> 30 (3): 1084–1127. doi:<a href="https://doi.org/10.1137/06066518X">10.1137/06066518X</a>.</p>
+</div>
+<div id="ref-grasedyck2010hierarchical">
+<p>Grasedyck, Lars. 2010. “Hierarchical Singular Value Decomposition of Tensors.” <em>SIAM J. Matrix Anal. Appl.</em> 31 (4): 2029–54. doi:<a href="https://doi.org/10.1137/090764189">10.1137/090764189</a>.</p>
+</div>
+<div id="ref-kilmer2011factorization">
+<p>Kilmer, Misha E., and Carla D. Martin. 2011. “Factorization Strategies for Third-Order Tensors.” <em>Linear Algebra Appl.</em> 435 (3): 641–58. doi:<a href="https://doi.org/10.1016/j.laa.2010.09.020">10.1016/j.laa.2010.09.020</a>.</p>
+</div>
+<div id="ref-hoff2011separable">
+<p>Hoff, Peter D. 2011. “Separable Covariance Arrays via the Tucker Product, with Applications to Multivariate Relational Data.” <em>Bayesian Anal.</em> 6 (2): 179–96. doi:<a href="https://doi.org/10.1214/11-BA606">10.1214/11-BA606</a>.</p>
+</div>
+<div id="ref-ohlson2013multilinear">
+<p>Ohlson, Martin, M. Rauf Ahmad, and Dietrich von Rosen. 2013. “The Multilinear Normal Distribution: Introduction and Some Basic Properties.” <em>J. Multivariate Anal.</em> 113: 37–47. doi:<a href="https://doi.org/10.1016/j.jmva.2011.05.015">10.1016/j.jmva.2011.05.015</a>.</p>
+</div>
+<div id="ref-manceur2013maximum">
+<p>Manceur, Ameur M., and Pierre Dutilleul. 2013. “Maximum Likelihood Estimation for the Tensor Normal Distribution: Algorithm, Minimum Sample Size, and Empirical Bias and Dispersion.” <em>J. Comput. Appl. Math.</em> 239: 37–49. doi:<a href="https://doi.org/10.1016/j.cam.2012.09.017">10.1016/j.cam.2012.09.017</a>.</p>
+</div>
+<div id="ref-srivastava1979introduction">
+<p>Srivastava, Muni Shanker, and C. G. Khatri. 1979. “An Introduction to Multivariate Statistics.” North-Holland, New York-Oxford.</p>
+</div>
+<div id="ref-dawid1981some">
+<p>Dawid, A. P. 1981. “Some Matrix-Variate Distribution Theory: Notational Considerations and a Bayesian Application.” <em>Biometrika</em> 68 (1): 265–74. doi:<a href="https://doi.org/10.1093/biomet/68.1.265">10.1093/biomet/68.1.265</a>.</p>
+</div>
+<div id="ref-akdemir2011array1">
+<p>Akdemir, Deniz, and Arjun K. Gupta. 2011. “Array Variate Random Variables with Multiway Kronecker Delta Covariance Matrix Structure.” <em>J. Algebr. Stat.</em> 2 (1): 98–113.</p>
+</div>
+<div id="ref-eaton1983multivariate">
+<p>Eaton, Morris L. 1983. <em>Multivariate Statistics</em>. Wiley Series in Probability and Mathematical Statistics: Probability and Mathematical Statistics. John Wiley &amp; Sons, Inc., New York.</p>
+</div>
+<div id="ref-magnus1999matrix">
+<p>Magnus, Jan R., and Heinz Neudecker. 1999. <em>Matrix Differential Calculus with Applications in Statistics and Econometrics</em>. Wiley Series in Probability and Statistics. John Wiley &amp; Sons, Ltd., Chichester.</p>
+</div>
+<div id="ref-horn2012matrix">
+<p>Horn, Roger A., and Charles R. Johnson. 2013. <em>Matrix Analysis</em>. Second. Cambridge University Press, Cambridge.</p>
+</div>
+<div id="ref-kofidis2001tensor">
+<p>Kofidis, Eleftherios, and Phillip A. Regalia. 2001. “Tensor Approximation and Signal Processing Applications.” In <em>Structured Matrices in Mathematics, Computer Science, and Engineering, I (Boulder, CO, 1999)</em>, 280:103–33. Contemp. Math. Amer. Math. Soc., Providence, RI. doi:<a href="https://doi.org/10.1090/conm/280/04625">10.1090/conm/280/04625</a>.</p>
+</div>
+<div id="ref-tseng2001convergence">
+<p>Tseng, P. 2001. “Convergence of a Block Coordinate Descent Method for Nondifferentiable Minimization.” <em>J. Optim. Theory Appl.</em> 109 (3): 475–94. doi:<a href="https://doi.org/10.1023/A:1017501703105">10.1023/A:1017501703105</a>.</p>
+</div>
+<div id="ref-gerard2015equivariant">
+<p>Gerard, David, and Peter Hoff. 2015. “Equivariant Minimax Dominators of the MLE in the Array Normal Model.” <em>J. Multivariate Anal.</em> 137: 32–49. doi:<a href="https://doi.org/10.1016/j.jmva.2015.01.020">10.1016/j.jmva.2015.01.020</a>.</p>
+</div>
+<div id="ref-anderson1986maximum">
+<p>Anderson, T. W., Kai Tai Fang, and Huang Hsu. 1986. “Maximum-Likelihood Estimates and Likelihood-Ratio Criteria for Multivariate Elliptically Contoured Distributions.” <em>Canad. J. Statist.</em> 14 (1): 55–59. doi:<a href="https://doi.org/10.2307/3315036">10.2307/3315036</a>.</p>
+</div>
+<div id="ref-lehmann2006testing">
+<p>Lehmann, E. L., and Joseph P. Romano. 2005. <em>Testing Statistical Hypotheses</em>. Third. Springer Texts in Statistics. Springer, New York.</p>
+</div>
+<div id="ref-pourahmadi1999joint">
+<p>Pourahmadi, Mohsen. 1999. “Joint Mean-Covariance Models with Applications to Longitudinal Data: Unconstrained Parameterisation.” <em>Biometrika</em> 86 (3): 677–90. doi:<a href="https://doi.org/10.1093/biomet/86.3.677">10.1093/biomet/86.3.677</a>.</p>
+</div>
+<div id="ref-lu2005likelihood">
+<p>Lu, Nelson, and Dale L. Zimmerman. 2005. “The Likelihood Ratio Test for a Separable Covariance Matrix.” <em>Statist. Probab. Lett.</em> 73 (4): 449–57. doi:<a href="https://doi.org/10.1016/j.spl.2005.04.020">10.1016/j.spl.2005.04.020</a>.</p>
+</div>
+<div id="ref-hoff2013equivariant">
+<p>Hoff, Peter David. 2013. “Equivariant and Scale-Free Tucker Decomposition Models.” <em>ArXiv Preprint ArXiv:1312.6397</em>.</p>
+</div>
+<div id="ref-hoff2007model">
+<p>Hoff, Peter D. 2007. “Model Averaging and Dimension Selection for the Singular Value Decomposition.” <em>J. Amer. Statist. Assoc.</em> 102 (478): 674–85. doi:<a href="https://doi.org/10.1198/016214506000001310">10.1198/016214506000001310</a>.</p>
+</div>
+<div id="ref-wiesel2012geodesic">
+<p>Wiesel, Ami. 2012a. “Geodesic Convexity and Covariance Estimation.” <em>IEEE Trans. Signal Process.</em> 60 (12): 6182–9. doi:<a href="https://doi.org/10.1109/TSP.2012.2218241">10.1109/TSP.2012.2218241</a>.</p>
+</div>
+<div id="ref-wiesel2012convexity">
+<p>Wiesel, Ami. 2012b. “On the Convexity in Kronecker Structured Covariance Estimation.” In <em>Statistical Signal Processing Workshop (SSP), 2012 IEEE</em>, 880–83. IEEE.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-holq.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

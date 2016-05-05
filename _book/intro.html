@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Theory and Methods for Tensor Data</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is my PhD thesis, formatted using the bookdown R package.">
+  <meta name="generator" content="bookdown 0.0.70 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Theory and Methods for Tensor Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is my PhD thesis, formatted using the bookdown R package." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Theory and Methods for Tensor Data" />
+  
+  <meta name="twitter:description" content="This is my PhD thesis, formatted using the bookdown R package." />
+  
+
+<meta name="author" content="David Gerard">
+
+<meta name="date" content="2016-05-05">
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="chapter-holq.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#section:boilertensor"><i class="fa fa-check"></i><b>2.1</b> Tensors</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#the-array-normal-model"><i class="fa fa-check"></i><b>2.2</b> The array normal model</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#contents-of-chapters"><i class="fa fa-check"></i><b>2.3</b> Contents of chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-holq.html"><a href="chapter-holq.html"><i class="fa fa-check"></i><b>3</b> A Higher-order LQ Decomposition for Separable Covariance Models</a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter-holq.html"><a href="chapter-holq.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holq"><i class="fa fa-check"></i><b>3.2</b> The incredible HOLQ</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-holq.html"><a href="chapter-holq.html#section:multnorm"><i class="fa fa-check"></i><b>3.3</b> The incredible HOLQ for separable covariance inference</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chapter-holq.html"><a href="chapter-holq.html#section:MLE"><i class="fa fa-check"></i><b>3.3.1</b> Maximum likelihood estimation</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holqjunior"><i class="fa fa-check"></i><b>3.3.2</b> HOLQ juniors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chapter-holq.html"><a href="chapter-holq.html#section:LRT"><i class="fa fa-check"></i><b>3.3.3</b> Likelihood ratio testing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chapter-holq.html"><a href="chapter-holq.html#section:othertensor"><i class="fa fa-check"></i><b>3.4</b> Other tensor decompositions</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="chapter-holq.html"><a href="chapter-holq.html#section:isvd"><i class="fa fa-check"></i><b>3.4.1</b> The incredible SVD</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:ihop"><i class="fa fa-check"></i><b>3.4.2</b> The IHOP decomposition</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holq_discussion"><i class="fa fa-check"></i><b>3.5</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theory and Methods for Tensor Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Introduction</h1>
+<p>This thesis concerns covariance and mean estimation in tensor-variate data. In this introductory chapter, we will begin by defining important operations over tensors that will be used throughout this thesis. We will then briefly describe the Tucker decomposition. We will follow this by reviewing the array normal model, a statistical model useful in describing the tensor-specific patterns in the data. We will finish this chapter with an outline of the thesis.</p>
+<div id="section:boilertensor" class="section level2">
+<h2><span class="header-section-number">2.1</span> Tensors</h2>
+<p>We define a tensor as a multidimensional array. To be more formal, in the same way that a vector is an element of a vector space, a tensor is an element of a tensor product of vector spaces. In the same way that up to a choice of basis on a real vector space a vector may be represented as a tuple of real numbers, up to a choice of bases on a set of real vector spaces a tensor may be represented as a multidimensional array of real numbers. For this thesis, we will not be concerned with this more formal definition.</p>
+<p>We will let <span class="math inline">\(\mathbb{R}^{p_1 \times \cdots \times p_K}\)</span> denote the real vector space of <span class="math inline">\(K\)</span>-order tensors with dimensions <span class="math inline">\((p_1,\ldots,p_K)\)</span>. A tensor <span class="math inline">\(\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span> contains elements <span class="math inline">\(\mathcal{X}_{[i_1,\ldots,i_K]} \in \mathbb{R}\)</span> for <span class="math inline">\(i_k = 1,\ldots,p_k\)</span> and <span class="math inline">\(k = 1,\ldots,K\)</span>. A <span class="math inline">\(1\)</span>-way tensor (<span class="math inline">\(K = 1\)</span>) is a vector and a <span class="math inline">\(2\)</span>-way tensor (<span class="math inline">\(K = 2\)</span>) is a matrix.</p>
+<p>Many data sets come in the form of a tensor (beyond <span class="math inline">\(K = 1\)</span> or <span class="math inline">\(2\)</span>). A multivariate longitudinal network data set is a tensor where an element is the value of relation type <span class="math inline">\(k\)</span> from node <span class="math inline">\(i\)</span> to node <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span> <span class="citation">(Hoff <a href="#ref-hoff2011separable">2011</a>)</span>. A movie can be represented as a tensor where an element of the tensor is the intensity of pixel <span class="math inline">\((i,j)\)</span> at frame <span class="math inline">\(t\)</span>. The mean estimates of an ANOVA model may be represented as a tensor where an element of the tensor is the mean value at factor 1 level <span class="math inline">\(i\)</span>, factor 2 level <span class="math inline">\(j\)</span>, and factor 3 level <span class="math inline">\(k\)</span> <span class="citation">(Volfovsky and Hoff <a href="#ref-volfovsky2014hierarchical">2014</a>)</span> – for example, we might be interested in concentrations of chemical <span class="math inline">\(i\)</span> at location <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span>. There are many other fields where tensors naturally arise <span class="citation">(Kroonenberg <a href="#ref-kroonenberg2008applied">2008</a>, <span class="citation">Kolda and Bader (<a href="#ref-kolda2009tensor">2009</a>)</span>)</span>.</p>
+<p>In order to analyze tensor data sets, we need tools to manipulate tensors. The first operation we consider is <span class="math inline">\(k\)</span>-mode matricization, or <span class="math inline">\(k\)</span>-mode matrix unfolding. This operation converts a tensor <span class="math inline">\(\mathcal{X} \in \mathbb{R}^{p_1\times\cdots \times p_K}\)</span> into a matrix <span class="math inline">\(\mathcal{X}_{(k)} \in \mathbb{R}^{p_k \times p/p_k}\)</span> where <span class="math inline">\(p = \prod_{k=1}^Kp_k\)</span>. The rows in the resulting matrix <span class="math inline">\(\mathcal{X}_{(k)}\)</span> index the <span class="math inline">\(k\)</span>th mode and the columns index all other modes. The formal definition, due to <span class="citation">Kolda and Bader (<a href="#ref-kolda2009tensor">2009</a>)</span>, is below:</p>
+<p><strong>Definition 1</strong> The <span class="math inline">\(k\)</span>-mode matricization of <span class="math inline">\(\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span>, denoted <span class="math inline">\(\mathcal{X}_{(k)}\in \mathbb{R}^{p_k \times p/p_k}\)</span>, maps element <span class="math inline">\((i_1,\ldots,i_K)\)</span> in <span class="math inline">\(\mathcal{X}\)</span> to element <span class="math inline">\((i_k,j)\)</span> in <span class="math inline">\(\mathcal{X}_{(k)}\)</span> where <span class="math display">\[
+j = 1 + \sum_{\substack{n = 1 \\ n\neq k}}^{K}(i_n - 1)J_n \text{ with } J_n = \prod_{\substack{ m = 1 \\ m \neq k}}^{n-1}p_m
+\]</span></p>
+<p>Similarly, we may vectorize a tensor into a vector.</p>
+<p><strong>Definition 2</strong> The vectorization of <span class="math inline">\(\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span>, denoted <span class="math inline">\(vec\left(\mathcal{X}\right) \in \mathbb{R}^{p}\)</span>, maps element <span class="math inline">\((i_1,\ldots,i_K)\)</span> in <span class="math inline">\(\mathcal{X}\)</span> to element <span class="math inline">\(j\)</span> in <span class="math inline">\(vec\left(\mathcal{X}\right)\)</span> where <span class="math display">\[
+j = 1 + \sum_{\substack{k = 1}}^{K}(i_k - 1)J_k \text{ with } J_k = \prod_{\substack{ m = 1}}^{k-1}p_m.
+\]</span></p>
+As an example of the matricization and vectorization operators, let <span class="math display">\[
+\mathcal{X} =
+\left(
+\begin{array}{cc|cc}
+\mathcal{X}_{[1,1,1]} &amp; \mathcal{X}_{[1,2,1]} &amp; \mathcal{X}_{[1,1,2]} &amp; \mathcal{X}_{[1,2,2]}\\
+\mathcal{X}_{[2,1,1]} &amp; \mathcal{X}_{[2,2,1]} &amp; \mathcal{X}_{[2,1,2]} &amp; \mathcal{X}_{[2,2,2]}
+\end{array}
+\right) \in \mathbb{R}^{2 \times 2 \times 2},
+\]</span> where the vertical line <span class="math inline">\(|\)</span> denotes the separation of the third indices. We provide the three possible matricizations:
+\begin{align*}
+\mathcal{X}_{(1)} &amp;=
+\left(
+\begin{array}{cccc}
+\mathcal{X}_{[1,1,1]} &amp; \mathcal{X}_{[1,2,1]} &amp; \mathcal{X}_{[1,1,2]} &amp; \mathcal{X}_{[1,2,2]}\\
+\mathcal{X}_{[2,1,1]} &amp; \mathcal{X}_{[2,2,1]} &amp; \mathcal{X}_{[2,1,2]} &amp; \mathcal{X}_{[2,2,2]}
+\end{array}
+\right),\\
+\mathcal{X}_{(2)} &amp;=
+\left(
+\begin{array}{cccc}
+\mathcal{X}_{[1,1,1]} &amp; \mathcal{X}_{[2,1,1]} &amp; \mathcal{X}_{[1,1,2]} &amp; \mathcal{X}_{[2,1,2]}\\
+\mathcal{X}_{[1,2,1]} &amp; \mathcal{X}_{[2,2,1]} &amp; \mathcal{X}_{[1,2,2]} &amp; \mathcal{X}_{[2,2,2]}
+\end{array}
+\right), \text{ and}\\
+\mathcal{X}_{(3)} &amp;=
+\left(
+\begin{array}{cccc}
+\mathcal{X}_{[1,1,1]} &amp; \mathcal{X}_{[2,1,1]} &amp; \mathcal{X}_{[1,2,1]} &amp; \mathcal{X}_{[2,2,1]}\\
+\mathcal{X}_{[1,1,2]} &amp; \mathcal{X}_{[2,1,2]} &amp; \mathcal{X}_{[1,2,2]} &amp; \mathcal{X}_{[2,2,2]}
+\end{array}
+\right).
+\end{align*}
+<p>We also have the resulting vectorization: <span class="math display">\[
+vec(\mathcal{X}) = (\mathcal{X}_{[1,1,1]},\mathcal{X}_{[2,1,1]},\mathcal{X}_{[1,2,1]},\mathcal{X}_{[2,2,1]},\mathcal{X}_{[1,1,2]},\mathcal{X}_{[2,1,2]},\mathcal{X}_{[1,2,2]},\mathcal{X}_{[2,2,2]})^T.
+\]</span> We will make heavy use the matricization and vectorization operators throughout this thesis.</p>
+Recall matrix multiplication: For <span class="math inline">\(A \in \mathbb{R}^{m \times n}\)</span> and <span class="math inline">\(B \in \mathbb{R}^{n \times p}\)</span>, we have <span class="math inline">\(X = AB \in \mathbb{R}^{m \times p}\)</span> if <span class="math display">\[
+X_{[i,j]} = \sum_{k = 1}^{n}A_{[i,k]}B_{[k,j]}.
+\]</span> There are a few types of multiplication between tensors <span class="citation">(Bader and Kolda <a href="#ref-bader2004matlab">2004</a>, <span class="citation">Kolda (<a href="#ref-kolda2006multilinear">2006</a>)</span>, <span class="citation">Kilmer and Martin (<a href="#ref-kilmer2011factorization">2011</a>)</span>)</span>. For this thesis, we will almost exclusively consider multilinear multiplication, or the Tucker product, between a tensor <span class="math inline">\(\mathcal{A} \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span> and a list of matrices <span class="math inline">\(B_k \in \mathbb{R}^{q_k \times p_k}\)</span> for <span class="math inline">\(k = 1,\ldots,K\)</span>. We have <span class="math inline">\(\mathcal{X} = (B_1,\ldots,B_K) \cdot \mathcal{A} \in \mathbb{R}^{q_1\times\cdots\times q_K}\)</span> if
+\begin{equation}
+\mathcal{X}_{[j_1,\ldots,j_K]} = \sum_{i_1,\ldots,i_K = 1}^{p_1,\ldots,p_K}\mathcal{A}_{[i_1,\ldots,i_{K}]}B_{1[j_1,i_1]}\cdots B_{K[j_K,i_K]}.
+\label{eq:tuckerdef}
+\end{equation}
+The Tucker product has important properties with regard to the matricization and vectorization operators:
+\begin{align}
+\mathcal{X} &amp;= (B_1,\ldots,B_K) \cdot \mathcal{A} \text{ iff}\\
+\mathcal{X}_{(k)} &amp;= B_k\mathcal{A}(B_K^T\otimes\cdots\otimes B_{k+1}^T\otimes B_{k-1}^T\otimes\cdots\otimes B_1^T) = B_k\mathcal{A}_{(k)}B_{-k}^T \text{ iff}\label{eq:matdef}\\
+vec(\mathcal{X}) &amp;= (B_K\otimes\cdots\otimes B_1)vec(\mathcal{A}), \label{eq:vecdef}
+\end{align}
+where <span class="math inline">\(B^T\)</span> is the matrix transpose of <span class="math inline">\(B\)</span> and “<span class="math inline">\(\otimes\)</span>” denotes the Kronecker product. The Kronecker product between two matrices <span class="math inline">\(A \in \mathbb{R}^{\ell \times m}\)</span> and <span class="math inline">\(B\in \mathbb{R}^{n \times p}\)</span> is the block matrix <span class="math inline">\(A \otimes B \in \mathbb{R}^{\ell n \times mp}\)</span> where each block is <span class="math inline">\(A_{[i,j]}B\)</span>. That is, <span class="math display">\[
+A \otimes B =
+\left(
+\begin{array}{cccc}
+A_{[1,1]}B &amp; A_{[1,2]}B &amp;\cdots &amp; A_{[1,m]}B\\
+A_{[2,1]}B &amp; A_{[2,2]}B &amp;\cdots &amp; A_{[2,m]}B\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+A_{[\ell,1]}B &amp; A_{[\ell,2]} &amp; \cdots &amp; A_{[\ell,m]}B\\
+\end{array}
+\right).
+\]</span> The Kronecker product has many useful properties:
+\begin{align}
+ &amp; \left(A \otimes B\right) \otimes C = A \otimes \left(B \otimes C\right) \nonumber\\
+ &amp; \left(A \otimes B\right)\left(C \otimes D\right) = AC \otimes BD \label{eq:kronprop2}\\
+ &amp; \left(A \otimes B\right)^T = \left(A^T \otimes B^T\right)\nonumber\\
+ &amp; \left(A \otimes B\right)^{-1} = A^{-1}\otimes B^{-1},\nonumber
+\end{align}
+<p>where <span class="math inline">\(A^{-1}\)</span> is the inverse of <span class="math inline">\(A\)</span>. Using (\ref{eq:vecdef} and (\ref{eq:kronprop2}, it is trivial to prove that <span class="math inline">\((C_1,\ldots,C_K)\cdot[(B_1,\ldots,B_K)\cdot \mathcal{A}] = (C_1B_1,\ldots,C_KB_K)\cdot\mathcal{A}\)</span>. Hence, we will usually allow “<span class="math inline">\(\cdot\)</span>” to also denote component-wise multiplication between two lists of matrices.</p>
+<p>The notion of matrix rank extends to tensors in multiple ways. The version that we consider in this thesis is that of . Recall that the rank of a matrix is the dimension of the vector space spanned by its columns and rows. Define the <span class="math inline">\(k\)</span>-mode vectors of a tensor <span class="math inline">\(\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span> as the <span class="math inline">\(p_k\)</span> dimensional vectors formed from <span class="math inline">\(\mathcal{X}\)</span> by varying <span class="math inline">\(i_k\)</span> and keeping the other indices fixed. Then the multilinear rank of the <span class="math inline">\(K\)</span>-order tensor <span class="math inline">\(\mathcal{X}\)</span> is the the <span class="math inline">\(K\)</span>-tuple, <span class="math inline">\((r_1,\ldots,r_K)\)</span>, where <span class="math inline">\(r_k\)</span> is the dimension of the vector space spanned by the <span class="math inline">\(k\)</span>-mode vectors. Equivalently, <span class="math inline">\(r_k\)</span> is the rank of the <span class="math inline">\(k\)</span>-mode unfolding of <span class="math inline">\(\mathcal{X}\)</span>, <span class="math inline">\(\mathcal{X}_{(k)}\)</span>. The notion of multilinear rank will be most extensively used in Chapter <a href="#chapter:sure"><strong>??</strong></a>.</p>
+<p>Decomposing a matrix extends to tensors in multiple ways. In the same way that matrix decompositions try to represent patterns in matrices in terms of products of lower dimensional matrices, tensor decompositions seek to find patterns by representing tensors in terms of products of lower dimensional tensors. When a tensor is represented as a Tucker product between a list of matrices and a “core” tensor (\ref{eq:tuckerdef}), this form of decomposition is called a “Tucker decomposition”. We will not be concerned with the myriad of other tensor decompositions <span class="citation">(Kolda and Bader <a href="#ref-kolda2009tensor">2009</a>, <span class="citation">Kilmer and Martin (<a href="#ref-kilmer2011factorization">2011</a>)</span>, <span class="citation">Cichocki et al. (<a href="#ref-cichockitensor">2014</a>)</span>)</span>.</p>
+The matrix singular value decomposition (SVD) can be viewed as a Tucker decomposition. Recall that <span class="math inline">\(X \in \mathbb{R}^{p \times n}\)</span> with <span class="math inline">\(p \leq n\)</span> may be decomposed as the product of an orthogonal matrix <span class="math inline">\(U \in \mathbb{R}^{p \times p}\)</span>, a diagonal matrix <span class="math inline">\(D =diag(\sigma_1,\ldots,\sigma_p)\)</span> for <span class="math inline">\(\sigma_1\geq\cdots\geq\sigma_p\)</span>, and a <span class="math inline">\(n \times p\)</span> matrix with orthonormal columns <span class="math inline">\(V\)</span>. We write the SVD as
+\begin{equation}
+X = UDV^T = (U,V)\cdot D.
+\end{equation}
+<p>Hence, <span class="math inline">\(D\)</span> is the core tensor and <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are the component matrices. Since <span class="math inline">\(X_{(1)} = X = UDV^T\)</span> and <span class="math inline">\(X_{(2)} = X^T = VDU^T\)</span> the SVD may be constructed by calculating the left singular vectors of the two matricizations of <span class="math inline">\(X\)</span>, followed by deriving the core array from <span class="math inline">\(D = U^TXV = (U^T,V^T)\cdot X\)</span>. A popular method, then, of generalizing the SVD to tensors is to compute the SVD of <span class="math inline">\(\mathcal{X}_{(k)} = U_kD_kV_k^T\)</span>, set <span class="math inline">\(\mathcal{S} = (U_1^T,\ldots,U_K^T)\cdot\mathcal{X}\)</span>, and write: <span class="math display">\[
+\mathcal{X} = (U_1,\ldots,U_K)\cdot\mathcal{S}.
+\]</span> This Tucker decomposition is called the higher-order SVD (HOSVD) <span class="citation">(L. De Lathauwer, De Moor, and Vandewalle <a href="#ref-de2000multilinear">2000</a><a href="#ref-de2000multilinear">a</a>)</span> and contains many properties which make it seem a natural generalization of the SVD to tensors. It will be considered briefly in Chapter <a href="chapter-holq.html#chapter:holq">3</a> and used extensively in Chapter <a href="#chapter:sure"><strong>??</strong></a>.</p>
+</div>
+<div id="the-array-normal-model" class="section level2">
+<h2><span class="header-section-number">2.2</span> The array normal model</h2>
+In this section, we review the array normal model. We do so by building up from the multivariate normal model. Let <span class="math inline">\(X \in \mathbb{R}^{p \times n}\)</span> such that <span class="math display">\[ 
+X_{[,1]},\ldots,X_{[,n]} \overset{i.i.d.}{\sim} N_p\left(\theta,\Psi_1\Psi_1^T\right).
+\]</span> This model may be written as
+\begin{equation}
+X \overset{d}{=} \theta\mathbf{1}_n^T + \Psi_1 Z, \label{eq:multnormmodelintro}
+\end{equation}
+where <span class="math inline">\(Z \in \mathbb{R}^{p \times n}\)</span> contains standard normal entries. From elementary operations, we have <span class="math display">\[
+E[(X - \theta\mathbf{1}_n^T)(X - \theta\mathbf{1}_n^T)^T] \propto \Psi_1\Psi_1^T.
+\]</span> That is, <span class="math inline">\(\Psi_1\Psi_1^T\)</span> represents the “row covariance” of <span class="math inline">\(X\)</span>. One natural extension of this model is to allow <span class="math inline">\(Z\)</span> in (\ref{eq:multnormmodelintro}) to be multiplied on the right by another matrix <span class="math inline">\(\Psi_2\)</span>.
+\begin{equation}
+X \overset{d}{=} \Theta + \Psi_1 Z \Psi_2^T, \label{eq:matnormmodel}
+\end{equation}
+where <span class="math inline">\(Z \in \mathbb{R}^{p \times n}\)</span> contains standard normal entries. This is called the matrix normal model <span class="citation">(Srivastava and Khatri <a href="#ref-srivastava1979introduction">1979</a>, <span class="citation">Dawid (<a href="#ref-dawid1981some">1981</a>)</span>)</span>. Under (\ref{eq:matnormmodel}), it can be shown that
+\begin{align}
+\begin{split}
+\label{eq:expectationmode}
+E[(X-\Theta)(X - \Theta)^T] &amp;\propto \Psi_1\Psi_1^T \text{ and}\\
+E[(X-\Theta)^T(X - \Theta)] &amp;\propto \Psi_2\Psi_2^T.
+\end{split}
+\end{align}
+<p>Intuitively, we may consider <span class="math inline">\(\Psi_1\Psi_1^T\)</span> as representing the “row covariance” while <span class="math inline">\(\Psi_2\Psi_2^T\)</span> represents the “column covariance”. This model contains <span class="math inline">\(p(p+1)/2 + n(n+1)/2 - 1\)</span> covariance parameters. If we were to have allowed for there to be unrestricted covariance between any element in <span class="math inline">\(X\)</span> and any other element in <span class="math inline">\(X\)</span>, then we would have had <span class="math inline">\(np(np + 1)/2\)</span> covariance parameters, which is potentially much larger than the number of covariance parameters in the matrix normal model.</p>
+Now consider the tensor case <span class="math inline">\(\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span>. A natural extension of the matrix normal model is to define the covariance structure through the Tucker product. This was done in <span class="citation">Hoff (<a href="#ref-hoff2011separable">2011</a>)</span>: <span class="math display">\[
+  \mathcal{X} \overset{d}{=} \Theta  + (\Psi_1,\ldots,\Psi_K) \cdot \mathcal{Z}  ,
+\]</span> where <span class="math inline">\(\Theta \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span> and <span class="math inline">\(\mathcal{Z} \in \mathbb{R}^{p_1\times\cdots\times p_K}\)</span> contains standard normal entries. From (\ref{eq:matdef}) we have
+\begin{align*}
+\mathcal{X} &amp;\overset{d}{=} \Theta  + (\Psi_1,\ldots,\Psi_K)\cdot\mathcal{Z}\\
+ \mathcal{X}_{(k)}  &amp;\overset{d}{=} \Theta_{(k)} + \Psi_k \mathcal{Z}_{(k)} \left ( \Psi_K^T \otimes \cdots \otimes \Psi_{k+1}^T \otimes \Psi_{k-1}^T \otimes \cdots  \otimes  \Psi_1^T \right )\\
+ &amp;= \Theta_{(k)} + \Psi_k \mathcal{Z}_{(k)} \Psi_{-k}^T.
+\end{align*}
+<p>From which, using (\ref{eq:expectationmode}), we can show that <span class="math display">\[
+  E\left[(\mathcal{X}_{(k)} - \Theta_{(k)})(\mathcal{X}_{(k)} - \Theta_{(k)})^T \right] \propto \Psi_k\Psi_k^T.
+\]</span> And thus, we may interpret <span class="math inline">\(\Psi_k\Psi_k^T\)</span> as being the covariance among the <span class="math inline">\(p_k\)</span> slices of the array <span class="math inline">\(\mathcal{X}\)</span> along the <span class="math inline">\(k\)</span>th mode.</p>
+As well as being a generalization of the multivariate normal model, the array normal model may be viewed as a special case of the multivariate normal model. Using (\ref{eq:vecdef}), we have
+\begin{align*}
+  &amp;\mathcal{X} \overset{d}{=} \Theta + (\Psi_1,\ldots,\Psi_k)\cdot\mathcal{Z}\\
+  &amp;\Leftrightarrow vec(\mathcal{X}) \overset{d}{=} vec(\Theta) + (\Psi_K \otimes \cdots \otimes \Psi_1)vec(\mathcal{Z})\\
+  &amp;\Leftrightarrow vec(\mathcal{X}) \sim N_p(vec(\Theta),\Psi_K\Psi_K^T \otimes \cdots \otimes \Psi_1\Psi_1^T).
+\end{align*}
+<p>That is, the array normal model is the multivariate normal model with a Kronecker structured covariance matrix.</p>
+<p>To summarize, the array normal model is appealing for tensor-variate data sets because of the intuitive interpretation of the mode-specific covariance parameters and because this model is more parsimonious than an unstructured covariance model. That is, the array normal model contains <span class="math inline">\(\frac{1}{2}\sum_{k=1}^{K}p_k(p_k+1) - K + 1\)</span> covariance parameters against the <span class="math inline">\(\frac{1}{2}\prod_{k=1}^Kp_k\left(\prod_{k=1}^Kp_k + 1\right)\)</span> covariance parameters of the multivariate normal model. The array normal model will be discussed in more detail in Chapters <a href="chapter-holq.html#chapter:holq">3</a> and <a href="#chapter:equivariant"><strong>??</strong></a>.</p>
+</div>
+<div id="contents-of-chapters" class="section level2">
+<h2><span class="header-section-number">2.3</span> Contents of chapters</h2>
+<p>In Chapter <a href="chapter-holq.html#chapter:holq">3</a>, we begin by developing a higher-order generalization of the LQ decomposition. We link this decomposition to its role in likelihood-based estimation and testing for Kronecker structured covariance models. This role is analogous to that of the LQ decomposition in likelihood inference for the multivariate normal model. We then extend the literature on tensor decompositions by showing that this higher-order LQ decomposition can be used to construct an alternative version of the popular higher-order singular value decomposition for tensor-valued data. We then develop a novel generalization of the polar decomposition to tensor-valued data.</p>
+<p>In Chapter <a href="#chapter:equivariant"><strong>??</strong></a>, we obtain optimality results for the array normal model that are analogous to some classical results concerning covariance estimation for the multivariate normal model. We show that under a lower triangular product group, a uniformly minimum risk equivariant estimator (UMREE) can be obtained via a generalized Bayes procedure. Although this UMREE is minimax and dominates the MLE, we show that it can be improved upon via an orthogonally equivariant modification. Numerical comparisons of the risks of these estimators show that the equivariant estimators can have substantially lower risks than the MLE.</p>
+<p>In Chapter <a href="#chapter:sure"><strong>??</strong></a>, we study mean estimation for tensor-variate data. We generalize existing matrix shrinkage methods to the estimation of a tensor of parameters from noisy tensor data. Specifically, we develop new classes of estimators that shrink or threshold the mode-specific singular values from the higher-order singular value decomposition of <span class="citation">L. De Lathauwer, De Moor, and Vandewalle (<a href="#ref-de2000multilinear">2000</a><a href="#ref-de2000multilinear">a</a>)</span>. These classes of estimators are indexed by tuning parameters, which we adaptively choose from the data by minimizing Stein’s unbiased risk estimate. In particular, this procedure provides a way to estimate the multilinear rank of the underlying signal tensor. Using simulation studies under a variety of conditions, we show that our estimators perform well when the mean tensor has approximately low multilinear rank, and perform competitively in the absence of low multilinear rank. We illustrate the use of these methods in an application to multivariate relational data.</p>
+<p>We conclude this thesis with a discussion and open problems in Chapter <a href="#chapter:discussion"><strong>??</strong></a>. In particular, we discuss the existence for the MLE in the array normal model and we discuss minimax estimates of the mean for tensor-variate data.</p>
+
+</div>
+</div>
+<h3><span class="header-section-number">7</span> References</h3>
+<div id="refs" class="references">
+<div id="ref-hoff2011separable">
+<p>Hoff, Peter D. 2011. “Separable Covariance Arrays via the Tucker Product, with Applications to Multivariate Relational Data.” <em>Bayesian Anal.</em> 6 (2): 179–96. doi:<a href="https://doi.org/10.1214/11-BA606">10.1214/11-BA606</a>.</p>
+</div>
+<div id="ref-volfovsky2014hierarchical">
+<p>Volfovsky, Alexander, and Peter D. Hoff. 2014. “Hierarchical Array Priors for ANOVA Decompositions of Cross-Classified Data.” <em>Ann. Appl. Stat.</em> 8 (1): 19–47. doi:<a href="https://doi.org/10.1214/13-AOAS685">10.1214/13-AOAS685</a>.</p>
+</div>
+<div id="ref-kroonenberg2008applied">
+<p>Kroonenberg, Pieter M. 2008. <em>Applied Multiway Data Analysis</em>. Wiley Series in Probability and Statistics. Wiley-Interscience [John Wiley &amp; Sons], Hoboken, NJ. doi:<a href="https://doi.org/10.1002/9780470238004">10.1002/9780470238004</a>.</p>
+</div>
+<div id="ref-kolda2009tensor">
+<p>Kolda, Tamara G., and Brett W. Bader. 2009. “Tensor Decompositions and Applications.” <em>SIAM Rev.</em> 51 (3): 455–500. doi:<a href="https://doi.org/10.1137/07070111X">10.1137/07070111X</a>.</p>
+</div>
+<div id="ref-bader2004matlab">
+<p>Bader, Brett W., and Tamara G. Kolda. 2004. “MATLAB Tensor Classes for Fast Algorithm Prototyping.” SAND2004-5187. Sandia National Laboratories. doi:<a href="https://doi.org/10.2172/974890">10.2172/974890</a>.</p>
+</div>
+<div id="ref-kolda2006multilinear">
+<p>Kolda, Tamara G. 2006. “Multilinear Operators for Higher-Order Decompositions.” SAND2006-2081. Sandia National Laboratories. doi:<a href="https://doi.org/10.2172/923081">10.2172/923081</a>.</p>
+</div>
+<div id="ref-kilmer2011factorization">
+<p>Kilmer, Misha E., and Carla D. Martin. 2011. “Factorization Strategies for Third-Order Tensors.” <em>Linear Algebra Appl.</em> 435 (3): 641–58. doi:<a href="https://doi.org/10.1016/j.laa.2010.09.020">10.1016/j.laa.2010.09.020</a>.</p>
+</div>
+<div id="ref-cichockitensor">
+<p>Cichocki, A, D Mandic, C Caiafa, AH Phan, G Zhou, Q Zhao, and L De Lathauwer. 2014. “Tensor Decompositions for Signal Processing Applications.” <em>From Two-Way to Multiway Component Analysis, ESAT-STADIUS Internal Report</em>, 13–235.</p>
+</div>
+<div id="ref-de2000multilinear">
+<p>De Lathauwer, Lieven, Bart De Moor, and Joos Vandewalle. 2000a. “A Multilinear Singular Value Decomposition.” <em>SIAM J. Matrix Anal. Appl.</em> 21 (4): 1253–78 (electronic). doi:<a href="https://doi.org/10.1137/S0895479896305696">10.1137/S0895479896305696</a>.</p>
+</div>
+<div id="ref-srivastava1979introduction">
+<p>Srivastava, Muni Shanker, and C. G. Khatri. 1979. “An Introduction to Multivariate Statistics.” North-Holland, New York-Oxford.</p>
+</div>
+<div id="ref-dawid1981some">
+<p>Dawid, A. P. 1981. “Some Matrix-Variate Distribution Theory: Notational Considerations and a Bayesian Application.” <em>Biometrika</em> 68 (1): 265–74. doi:<a href="https://doi.org/10.1093/biomet/68.1.265">10.1093/biomet/68.1.265</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-holq.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

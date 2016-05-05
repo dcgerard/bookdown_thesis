@@ -1,0 +1,180 @@
+# Introduction {#intro}
+This thesis concerns covariance and mean estimation in tensor-variate data. In this introductory chapter, we will begin by defining important operations over tensors that will be used throughout this thesis. We will then briefly describe the Tucker decomposition. We will follow this by reviewing the array normal model, a statistical model useful in describing the tensor-specific patterns in the data. We will finish this chapter with an outline of the thesis.
+
+## Tensors {#section:boilertensor}
+We define a tensor as a multidimensional array. To be more formal, in the same way that a vector is an element of a vector space, a tensor is an element of a tensor product of vector spaces. In the same way that up to a choice of basis on a real vector space a vector may be represented as a tuple of real numbers, up to a choice of bases on a set of real vector spaces a tensor may be represented as a multidimensional array of real numbers. For this thesis, we will not be concerned with this more formal definition.
+
+We will let $\mathbb{R}^{p_1 \times \cdots \times p_K}$ denote the real vector space of $K$-order tensors with dimensions $(p_1,\ldots,p_K)$. A tensor $\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}$ contains elements $\mathcal{X}_{[i_1,\ldots,i_K]} \in \mathbb{R}$ for $i_k = 1,\ldots,p_k$ and $k = 1,\ldots,K$. A $1$-way tensor ($K = 1$) is a vector and a $2$-way tensor ($K = 2$) is a matrix.
+
+Many data sets come in the form of a tensor (beyond $K = 1$ or $2$). A multivariate longitudinal network data set is a tensor where an element is the value of relation type $k$ from node $i$ to node $j$ at time $t$ [@hoff2011separable]. A movie can be represented as a tensor where an element of the tensor is the intensity of pixel $(i,j)$ at frame $t$. The mean estimates of an ANOVA model may be represented as a tensor where an element of the tensor is the mean value at factor 1 level $i$, factor 2 level $j$, and factor 3 level $k$ [@volfovsky2014hierarchical] -- for example, we might be interested in concentrations of chemical $i$ at location $j$ at time $t$. There are many other fields where tensors naturally arise [@kroonenberg2008applied, @kolda2009tensor].
+
+In order to analyze tensor data sets, we need tools to manipulate tensors. The first operation we consider is $k$-mode matricization, or $k$-mode matrix unfolding. This operation converts a tensor $\mathcal{X} \in \mathbb{R}^{p_1\times\cdots \times p_K}$ into a matrix $\mathcal{X}_{(k)} \in \mathbb{R}^{p_k \times p/p_k}$ where $p = \prod_{k=1}^Kp_k$. The rows in the resulting matrix $\mathcal{X}_{(k)}$ index the $k$th mode and the columns index all other modes. The formal definition, due to @kolda2009tensor, is below:
+
+**Definition 1**
+The $k$-mode matricization of $\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}$, denoted $\mathcal{X}_{(k)}\in \mathbb{R}^{p_k \times p/p_k}$, maps element $(i_1,\ldots,i_K)$ in $\mathcal{X}$ to element $(i_k,j)$ in $\mathcal{X}_{(k)}$ where
+$$
+j = 1 + \sum_{\substack{n = 1 \\ n\neq k}}^{K}(i_n - 1)J_n \text{ with } J_n = \prod_{\substack{ m = 1 \\ m \neq k}}^{n-1}p_m
+$$
+
+Similarly, we may vectorize a tensor into a vector.
+
+**Definition 2**
+The vectorization of $\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}$, denoted $vec\left(\mathcal{X}\right) \in \mathbb{R}^{p}$, maps element $(i_1,\ldots,i_K)$ in $\mathcal{X}$ to element $j$ in $vec\left(\mathcal{X}\right)$ where
+$$
+j = 1 + \sum_{\substack{k = 1}}^{K}(i_k - 1)J_k \text{ with } J_k = \prod_{\substack{ m = 1}}^{k-1}p_m.
+$$
+
+As an example of the matricization and vectorization operators, let
+$$
+\mathcal{X} =
+\left(
+\begin{array}{cc|cc}
+\mathcal{X}_{[1,1,1]} & \mathcal{X}_{[1,2,1]} & \mathcal{X}_{[1,1,2]} & \mathcal{X}_{[1,2,2]}\\
+\mathcal{X}_{[2,1,1]} & \mathcal{X}_{[2,2,1]} & \mathcal{X}_{[2,1,2]} & \mathcal{X}_{[2,2,2]}
+\end{array}
+\right) \in \mathbb{R}^{2 \times 2 \times 2},
+$$
+where the vertical line $|$ denotes the separation of the third indices. We provide the three possible matricizations:
+\begin{align*}
+\mathcal{X}_{(1)} &=
+\left(
+\begin{array}{cccc}
+\mathcal{X}_{[1,1,1]} & \mathcal{X}_{[1,2,1]} & \mathcal{X}_{[1,1,2]} & \mathcal{X}_{[1,2,2]}\\
+\mathcal{X}_{[2,1,1]} & \mathcal{X}_{[2,2,1]} & \mathcal{X}_{[2,1,2]} & \mathcal{X}_{[2,2,2]}
+\end{array}
+\right),\\
+\mathcal{X}_{(2)} &=
+\left(
+\begin{array}{cccc}
+\mathcal{X}_{[1,1,1]} & \mathcal{X}_{[2,1,1]} & \mathcal{X}_{[1,1,2]} & \mathcal{X}_{[2,1,2]}\\
+\mathcal{X}_{[1,2,1]} & \mathcal{X}_{[2,2,1]} & \mathcal{X}_{[1,2,2]} & \mathcal{X}_{[2,2,2]}
+\end{array}
+\right), \text{ and}\\
+\mathcal{X}_{(3)} &=
+\left(
+\begin{array}{cccc}
+\mathcal{X}_{[1,1,1]} & \mathcal{X}_{[2,1,1]} & \mathcal{X}_{[1,2,1]} & \mathcal{X}_{[2,2,1]}\\
+\mathcal{X}_{[1,1,2]} & \mathcal{X}_{[2,1,2]} & \mathcal{X}_{[1,2,2]} & \mathcal{X}_{[2,2,2]}
+\end{array}
+\right).
+\end{align*}
+We also have the resulting vectorization:
+$$
+vec(\mathcal{X}) = (\mathcal{X}_{[1,1,1]},\mathcal{X}_{[2,1,1]},\mathcal{X}_{[1,2,1]},\mathcal{X}_{[2,2,1]},\mathcal{X}_{[1,1,2]},\mathcal{X}_{[2,1,2]},\mathcal{X}_{[1,2,2]},\mathcal{X}_{[2,2,2]})^T.
+$$
+We will make heavy use the matricization and vectorization operators throughout this thesis.
+
+Recall matrix multiplication: For $A \in \mathbb{R}^{m \times n}$ and $B \in \mathbb{R}^{n \times p}$, we have $X = AB \in \mathbb{R}^{m \times p}$ if
+$$
+X_{[i,j]} = \sum_{k = 1}^{n}A_{[i,k]}B_{[k,j]}.
+$$
+There are a few types of multiplication between tensors [@bader2004matlab, @kolda2006multilinear, @kilmer2011factorization]. For this thesis, we will almost exclusively consider multilinear multiplication, or the Tucker product, between a tensor $\mathcal{A} \in \mathbb{R}^{p_1\times\cdots\times p_K}$ and a list of matrices $B_k \in \mathbb{R}^{q_k \times p_k}$ for $k = 1,\ldots,K$. We have $\mathcal{X} = (B_1,\ldots,B_K) \cdot \mathcal{A} \in \mathbb{R}^{q_1\times\cdots\times q_K}$ if
+\begin{equation}
+\mathcal{X}_{[j_1,\ldots,j_K]} = \sum_{i_1,\ldots,i_K = 1}^{p_1,\ldots,p_K}\mathcal{A}_{[i_1,\ldots,i_{K}]}B_{1[j_1,i_1]}\cdots B_{K[j_K,i_K]}.
+\label{eq:tuckerdef}
+\end{equation}
+The Tucker product has important properties with regard to the matricization and vectorization operators:
+\begin{align}
+\mathcal{X} &= (B_1,\ldots,B_K) \cdot \mathcal{A} \text{ iff}\\
+\mathcal{X}_{(k)} &= B_k\mathcal{A}(B_K^T\otimes\cdots\otimes B_{k+1}^T\otimes B_{k-1}^T\otimes\cdots\otimes B_1^T) = B_k\mathcal{A}_{(k)}B_{-k}^T \text{ iff}\label{eq:matdef}\\
+vec(\mathcal{X}) &= (B_K\otimes\cdots\otimes B_1)vec(\mathcal{A}), \label{eq:vecdef}
+\end{align}
+where  $B^T$ is the matrix transpose of $B$ and "$\otimes$" denotes the Kronecker product. The Kronecker product between two matrices $A \in \mathbb{R}^{\ell \times m}$ and $B\in \mathbb{R}^{n \times p}$ is the block matrix $A \otimes B \in \mathbb{R}^{\ell n \times mp}$ where each block is $A_{[i,j]}B$. That is,
+$$
+A \otimes B =
+\left(
+\begin{array}{cccc}
+A_{[1,1]}B & A_{[1,2]}B &\cdots & A_{[1,m]}B\\
+A_{[2,1]}B & A_{[2,2]}B &\cdots & A_{[2,m]}B\\
+\vdots & \vdots & \ddots & \vdots\\
+A_{[\ell,1]}B & A_{[\ell,2]} & \cdots & A_{[\ell,m]}B\\
+\end{array}
+\right).
+$$
+The Kronecker product has many useful properties:
+\begin{align}
+ & \left(A \otimes B\right) \otimes C = A \otimes \left(B \otimes C\right) \nonumber\\
+ & \left(A \otimes B\right)\left(C \otimes D\right) = AC \otimes BD \label{eq:kronprop2}\\
+ & \left(A \otimes B\right)^T = \left(A^T \otimes B^T\right)\nonumber\\
+ & \left(A \otimes B\right)^{-1} = A^{-1}\otimes B^{-1},\nonumber
+\end{align}
+where $A^{-1}$ is the inverse of $A$. Using (\@ref(eq:vecdef) and (\@ref(eq:kronprop2), it is trivial to prove that $(C_1,\ldots,C_K)\cdot[(B_1,\ldots,B_K)\cdot \mathcal{A}] = (C_1B_1,\ldots,C_KB_K)\cdot\mathcal{A}$. Hence, we will usually allow "$\cdot$" to also denote component-wise multiplication between two lists of matrices.
+
+The notion of matrix rank extends to tensors in multiple ways. The version that we consider in this thesis is that of \emph{multilinear rank}. Recall that the rank of a matrix is the dimension of the vector space spanned by its columns and rows. Define the $k$-mode vectors of a tensor $\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}$ as the $p_k$ dimensional vectors formed from $\mathcal{X}$ by varying $i_k$ and keeping the other indices fixed. Then the multilinear rank of the $K$-order tensor $\mathcal{X}$ is the the $K$-tuple, $(r_1,\ldots,r_K)$, where $r_k$ is the dimension of the vector space spanned by the $k$-mode vectors. Equivalently, $r_k$ is the rank of the $k$-mode unfolding of $\mathcal{X}$, $\mathcal{X}_{(k)}$. The notion of multilinear rank will be most extensively used in Chapter \@ref(chapter:sure).
+
+Decomposing a matrix extends to tensors in multiple ways. In the same way that matrix decompositions try to represent patterns in matrices in terms of products of lower dimensional matrices, tensor decompositions seek to find patterns by representing tensors in terms of products of lower dimensional tensors. When a tensor is represented as a Tucker product between a list of matrices and a "core" tensor (\@ref(eq:tuckerdef)), this form of decomposition is called a "Tucker decomposition". We will not be concerned with the myriad of other tensor decompositions [@kolda2009tensor, @kilmer2011factorization, @cichockitensor].
+
+The matrix singular value decomposition (SVD) can be viewed as a Tucker decomposition. Recall that $X \in \mathbb{R}^{p \times n}$ with $p \leq n$ may be decomposed as the product of an orthogonal matrix $U \in \mathbb{R}^{p \times p}$, a diagonal matrix $D =diag(\sigma_1,\ldots,\sigma_p)$ for $\sigma_1\geq\cdots\geq\sigma_p$, and a $n \times p$ matrix with orthonormal columns $V$. We write the SVD as
+\begin{equation}
+X = UDV^T = (U,V)\cdot D.
+\end{equation}
+Hence, $D$ is the core tensor and $U$ and $V$ are the component matrices. Since $X_{(1)} = X = UDV^T$ and $X_{(2)} = X^T = VDU^T$ the SVD may be constructed by calculating the left singular vectors of the two matricizations of $X$, followed by deriving the core array from $D = U^TXV = (U^T,V^T)\cdot X$. A popular method, then, of generalizing the SVD to tensors is to compute the SVD of $\mathcal{X}_{(k)} = U_kD_kV_k^T$, set $\mathcal{S} = (U_1^T,\ldots,U_K^T)\cdot\mathcal{X}$, and write:
+$$
+\mathcal{X} = (U_1,\ldots,U_K)\cdot\mathcal{S}.
+$$
+This Tucker decomposition is called the higher-order SVD (HOSVD) [@de2000multilinear] and contains many properties which make it seem a natural generalization of the SVD to tensors. It will be considered briefly in Chapter \@ref(chapter:holq) and used extensively in Chapter \@ref(chapter:sure).
+
+
+
+## The array normal model
+In this section, we review the array normal model. We do so by building up from the multivariate normal model. Let $X \in \mathbb{R}^{p \times n}$ such that
+$$ 
+X_{[,1]},\ldots,X_{[,n]} \overset{i.i.d.}{\sim} N_p\left(\theta,\Psi_1\Psi_1^T\right).
+$$
+This model may be written as
+\begin{equation}
+X \overset{d}{=} \theta\mathbf{1}_n^T + \Psi_1 Z, \label{eq:multnormmodelintro}
+\end{equation}
+where $Z \in \mathbb{R}^{p \times n}$ contains standard normal entries. From elementary operations, we have
+$$
+E[(X - \theta\mathbf{1}_n^T)(X - \theta\mathbf{1}_n^T)^T] \propto \Psi_1\Psi_1^T.
+$$
+That is, $\Psi_1\Psi_1^T$ represents the "row covariance" of $X$. One natural extension of this model is to allow $Z$ in (\@ref(eq:multnormmodelintro)) to be multiplied on the right by another matrix $\Psi_2$.
+\begin{equation}
+X \overset{d}{=} \Theta + \Psi_1 Z \Psi_2^T, \label{eq:matnormmodel}
+\end{equation}
+where $Z \in \mathbb{R}^{p \times n}$ contains standard normal entries. This is called the matrix normal model [@srivastava1979introduction, @dawid1981some]. Under (\@ref(eq:matnormmodel)), it can be shown that
+\begin{align}
+\begin{split}
+\label{eq:expectationmode}
+E[(X-\Theta)(X - \Theta)^T] &\propto \Psi_1\Psi_1^T \text{ and}\\
+E[(X-\Theta)^T(X - \Theta)] &\propto \Psi_2\Psi_2^T.
+\end{split}
+\end{align}
+ Intuitively, we may consider $\Psi_1\Psi_1^T$ as representing the "row covariance" while $\Psi_2\Psi_2^T$ represents the "column covariance". This model contains $p(p+1)/2 + n(n+1)/2 - 1$ covariance parameters. If we were to have allowed for there to be unrestricted covariance between any element in $X$ and any other element in $X$, then we would have had $np(np + 1)/2$ covariance parameters, which is potentially much larger than the number of covariance parameters in the matrix normal model.
+
+
+Now consider the tensor case $\mathcal{X} \in \mathbb{R}^{p_1\times\cdots\times p_K}$. A natural extension of the matrix normal model is to define the covariance structure through the Tucker product. This was done in @hoff2011separable:
+$$
+  \mathcal{X} \overset{d}{=} \Theta  + (\Psi_1,\ldots,\Psi_K) \cdot \mathcal{Z}  ,
+$$
+where $\Theta \in \mathbb{R}^{p_1\times\cdots\times p_K}$ and $\mathcal{Z} \in \mathbb{R}^{p_1\times\cdots\times p_K}$ contains standard normal entries. From (\@ref(eq:matdef)) we have
+\begin{align*}
+\mathcal{X} &\overset{d}{=} \Theta  + (\Psi_1,\ldots,\Psi_K)\cdot\mathcal{Z}\\
+ \mathcal{X}_{(k)}  &\overset{d}{=} \Theta_{(k)} + \Psi_k \mathcal{Z}_{(k)} \left ( \Psi_K^T \otimes \cdots \otimes \Psi_{k+1}^T \otimes \Psi_{k-1}^T \otimes \cdots  \otimes  \Psi_1^T \right )\\
+ &= \Theta_{(k)} + \Psi_k \mathcal{Z}_{(k)} \Psi_{-k}^T.
+\end{align*}
+ From which, using (\@ref(eq:expectationmode)), we can show that
+$$
+  E\left[(\mathcal{X}_{(k)} - \Theta_{(k)})(\mathcal{X}_{(k)} - \Theta_{(k)})^T \right] \propto \Psi_k\Psi_k^T.
+$$
+And thus, we may interpret $\Psi_k\Psi_k^T$ as being the covariance among the $p_k$ slices of the array $\mathcal{X}$ along the $k$th mode.
+
+As well as being a generalization of the multivariate normal model, the array normal model may be viewed as a special case of the multivariate normal model. Using (\@ref(eq:vecdef)), we have
+\begin{align*}
+  &\mathcal{X} \overset{d}{=} \Theta + (\Psi_1,\ldots,\Psi_k)\cdot\mathcal{Z}\\
+  &\Leftrightarrow vec(\mathcal{X}) \overset{d}{=} vec(\Theta) + (\Psi_K \otimes \cdots \otimes \Psi_1)vec(\mathcal{Z})\\
+  &\Leftrightarrow vec(\mathcal{X}) \sim N_p(vec(\Theta),\Psi_K\Psi_K^T \otimes \cdots \otimes \Psi_1\Psi_1^T).
+\end{align*}
+That is, the array normal model is the multivariate normal model with a Kronecker structured covariance matrix.
+
+ To summarize, the array normal model is appealing for tensor-variate data sets because of the intuitive interpretation of the mode-specific covariance parameters and because this model is more parsimonious than an unstructured covariance model. That is, the array normal model contains $\frac{1}{2}\sum_{k=1}^{K}p_k(p_k+1) - K + 1$ covariance parameters against the $\frac{1}{2}\prod_{k=1}^Kp_k\left(\prod_{k=1}^Kp_k + 1\right)$ covariance parameters of the multivariate normal model.  The array normal model will be discussed in more detail in Chapters \@ref(chapter:holq) and \@ref(chapter:equivariant).
+
+## Contents of chapters
+In Chapter \@ref(chapter:holq), we begin by developing a higher-order generalization of the LQ decomposition. We link this decomposition to its  role in likelihood-based estimation and testing for Kronecker structured covariance models. This role is analogous to that of the LQ decomposition in likelihood inference for the multivariate normal model. We then extend the literature on tensor decompositions by showing that this higher-order LQ decomposition can be used to construct an alternative version of the popular higher-order singular value decomposition for tensor-valued data. We then develop a novel generalization of the polar decomposition to tensor-valued data.
+
+In Chapter \@ref(chapter:equivariant), we obtain optimality results for the array normal model that are analogous to some classical results concerning covariance estimation for the multivariate normal model. We show that under a lower triangular product group, a uniformly minimum risk equivariant estimator (UMREE) can be obtained via a generalized Bayes procedure.  Although this UMREE is minimax and dominates the MLE, we show that it can be improved upon via an orthogonally equivariant modification. Numerical comparisons of the risks of these estimators show that the equivariant estimators can have substantially lower risks than the MLE. 
+
+In Chapter \@ref(chapter:sure), we study mean estimation for tensor-variate data. We generalize existing matrix shrinkage methods to the estimation of a tensor of parameters from noisy tensor data. Specifically, we develop new classes of estimators that shrink or threshold the mode-specific singular values from the higher-order singular value decomposition of @de2000multilinear. These classes of estimators are indexed by tuning parameters, which we adaptively choose from the data by minimizing Stein's unbiased risk estimate. In particular, this procedure provides a way to estimate the multilinear rank of the underlying signal tensor. Using simulation studies under a variety of conditions, we show that our estimators perform well when the mean tensor has approximately low multilinear rank, and perform competitively in the absence of low multilinear rank. We illustrate the use of these methods in an application to multivariate relational data.
+
+We conclude this thesis with a discussion and open problems in Chapter \@ref(chapter:discussion). In particular, we discuss the existence for the MLE in the array normal model and we discuss minimax estimates of the mean for tensor-variate data.

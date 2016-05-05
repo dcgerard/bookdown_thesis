@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Theory and Methods for Tensor Data</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is my PhD thesis, formatted using the bookdown R package.">
+  <meta name="generator" content="bookdown 0.0.70 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Theory and Methods for Tensor Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is my PhD thesis, formatted using the bookdown R package." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Theory and Methods for Tensor Data" />
+  
+  <meta name="twitter:description" content="This is my PhD thesis, formatted using the bookdown R package." />
+  
+
+<meta name="author" content="David Gerard">
+
+<meta name="date" content="2016-05-05">
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="final-words.html">
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#section:boilertensor"><i class="fa fa-check"></i><b>2.1</b> Tensors</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#the-array-normal-model"><i class="fa fa-check"></i><b>2.2</b> The array normal model</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#contents-of-chapters"><i class="fa fa-check"></i><b>2.3</b> Contents of chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-holq.html"><a href="chapter-holq.html"><i class="fa fa-check"></i><b>3</b> A Higher-order LQ Decomposition for Separable Covariance Models</a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter-holq.html"><a href="chapter-holq.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holq"><i class="fa fa-check"></i><b>3.2</b> The incredible HOLQ</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-holq.html"><a href="chapter-holq.html#section:multnorm"><i class="fa fa-check"></i><b>3.3</b> The incredible HOLQ for separable covariance inference</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chapter-holq.html"><a href="chapter-holq.html#section:MLE"><i class="fa fa-check"></i><b>3.3.1</b> Maximum likelihood estimation</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holqjunior"><i class="fa fa-check"></i><b>3.3.2</b> HOLQ juniors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chapter-holq.html"><a href="chapter-holq.html#section:LRT"><i class="fa fa-check"></i><b>3.3.3</b> Likelihood ratio testing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chapter-holq.html"><a href="chapter-holq.html#section:othertensor"><i class="fa fa-check"></i><b>3.4</b> Other tensor decompositions</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="chapter-holq.html"><a href="chapter-holq.html#section:isvd"><i class="fa fa-check"></i><b>3.4.1</b> The incredible SVD</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chapter-holq.html"><a href="chapter-holq.html#section:ihop"><i class="fa fa-check"></i><b>3.4.2</b> The IHOP decomposition</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chapter-holq.html"><a href="chapter-holq.html#section:holq_discussion"><i class="fa fa-check"></i><b>3.5</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theory and Methods for Tensor Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="references" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> References</h1>
+
+<div id="refs" class="references">
+<div>
+<p>Akdemir, Deniz, and Arjun K. Gupta. 2011. “Array Variate Random Variables with Multiway Kronecker Delta Covariance Matrix Structure.” <em>J. Algebr. Stat.</em> 2 (1): 98–113.</p>
+</div>
+<div>
+<p>Anderson, T. W., Kai Tai Fang, and Huang Hsu. 1986. “Maximum-Likelihood Estimates and Likelihood-Ratio Criteria for Multivariate Elliptically Contoured Distributions.” <em>Canad. J. Statist.</em> 14 (1): 55–59. doi:<a href="https://doi.org/10.2307/3315036">10.2307/3315036</a>.</p>
+</div>
+<div>
+<p>Bader, Brett W., and Tamara G. Kolda. 2004. “MATLAB Tensor Classes for Fast Algorithm Prototyping.” SAND2004-5187. Sandia National Laboratories. doi:<a href="https://doi.org/10.2172/974890">10.2172/974890</a>.</p>
+</div>
+<div>
+<p>Cichocki, A, D Mandic, C Caiafa, AH Phan, G Zhou, Q Zhao, and L De Lathauwer. 2014. “Tensor Decompositions for Signal Processing Applications.” <em>From Two-Way to Multiway Component Analysis, ESAT-STADIUS Internal Report</em>, 13–235.</p>
+</div>
+<div>
+<p>Dawid, A. P. 1981. “Some Matrix-Variate Distribution Theory: Notational Considerations and a Bayesian Application.” <em>Biometrika</em> 68 (1): 265–74. doi:<a href="https://doi.org/10.1093/biomet/68.1.265">10.1093/biomet/68.1.265</a>.</p>
+</div>
+<div>
+<p>De Lathauwer, Lieven, Bart De Moor, and Joos Vandewalle. 2000a. “A Multilinear Singular Value Decomposition.” <em>SIAM J. Matrix Anal. Appl.</em> 21 (4): 1253–78 (electronic). doi:<a href="https://doi.org/10.1137/S0895479896305696">10.1137/S0895479896305696</a>.</p>
+</div>
+<div>
+<p>———. 2000b. “On the Best Rank-1 and Rank-<span class="math inline">\((R_1,R_2,\cdots,R_N)\)</span> Approximation of Higher-Order Tensors.” <em>SIAM J. Matrix Anal. Appl.</em> 21 (4): 1324–42 (electronic). doi:<a href="https://doi.org/10.1137/S0895479898346995">10.1137/S0895479898346995</a>.</p>
+</div>
+<div>
+<p>Eaton, Morris L. 1983. <em>Multivariate Statistics</em>. Wiley Series in Probability and Mathematical Statistics: Probability and Mathematical Statistics. John Wiley &amp; Sons, Inc., New York.</p>
+</div>
+<div>
+<p>Gerard, David, and Peter Hoff. 2015. “Equivariant Minimax Dominators of the MLE in the Array Normal Model.” <em>J. Multivariate Anal.</em> 137: 32–49. doi:<a href="https://doi.org/10.1016/j.jmva.2015.01.020">10.1016/j.jmva.2015.01.020</a>.</p>
+</div>
+<div>
+<p>Grasedyck, Lars. 2010. “Hierarchical Singular Value Decomposition of Tensors.” <em>SIAM J. Matrix Anal. Appl.</em> 31 (4): 2029–54. doi:<a href="https://doi.org/10.1137/090764189">10.1137/090764189</a>.</p>
+</div>
+<div>
+<p>Hoff, Peter D. 2007. “Model Averaging and Dimension Selection for the Singular Value Decomposition.” <em>J. Amer. Statist. Assoc.</em> 102 (478): 674–85. doi:<a href="https://doi.org/10.1198/016214506000001310">10.1198/016214506000001310</a>.</p>
+</div>
+<div>
+<p>———. 2011. “Separable Covariance Arrays via the Tucker Product, with Applications to Multivariate Relational Data.” <em>Bayesian Anal.</em> 6 (2): 179–96. doi:<a href="https://doi.org/10.1214/11-BA606">10.1214/11-BA606</a>.</p>
+</div>
+<div>
+<p>Hoff, Peter David. 2013. “Equivariant and Scale-Free Tucker Decomposition Models.” <em>ArXiv Preprint ArXiv:1312.6397</em>.</p>
+</div>
+<div>
+<p>Horn, Roger A., and Charles R. Johnson. 2013. <em>Matrix Analysis</em>. Second. Cambridge University Press, Cambridge.</p>
+</div>
+<div>
+<p>Kilmer, Misha E., and Carla D. Martin. 2011. “Factorization Strategies for Third-Order Tensors.” <em>Linear Algebra Appl.</em> 435 (3): 641–58. doi:<a href="https://doi.org/10.1016/j.laa.2010.09.020">10.1016/j.laa.2010.09.020</a>.</p>
+</div>
+<div>
+<p>Kofidis, Eleftherios, and Phillip A. Regalia. 2001. “Tensor Approximation and Signal Processing Applications.” In <em>Structured Matrices in Mathematics, Computer Science, and Engineering, I (Boulder, CO, 1999)</em>, 280:103–33. Contemp. Math. Amer. Math. Soc., Providence, RI. doi:<a href="https://doi.org/10.1090/conm/280/04625">10.1090/conm/280/04625</a>.</p>
+</div>
+<div>
+<p>Kolda, Tamara G. 2006. “Multilinear Operators for Higher-Order Decompositions.” SAND2006-2081. Sandia National Laboratories. doi:<a href="https://doi.org/10.2172/923081">10.2172/923081</a>.</p>
+</div>
+<div>
+<p>Kolda, Tamara G., and Brett W. Bader. 2009. “Tensor Decompositions and Applications.” <em>SIAM Rev.</em> 51 (3): 455–500. doi:<a href="https://doi.org/10.1137/07070111X">10.1137/07070111X</a>.</p>
+</div>
+<div>
+<p>Kroonenberg, Pieter M. 2008. <em>Applied Multiway Data Analysis</em>. Wiley Series in Probability and Statistics. Wiley-Interscience [John Wiley &amp; Sons], Hoboken, NJ. doi:<a href="https://doi.org/10.1002/9780470238004">10.1002/9780470238004</a>.</p>
+</div>
+<div>
+<p>Lehmann, E. L., and Joseph P. Romano. 2005. <em>Testing Statistical Hypotheses</em>. Third. Springer Texts in Statistics. Springer, New York.</p>
+</div>
+<div>
+<p>Lu, Nelson, and Dale L. Zimmerman. 2005. “The Likelihood Ratio Test for a Separable Covariance Matrix.” <em>Statist. Probab. Lett.</em> 73 (4): 449–57. doi:<a href="https://doi.org/10.1016/j.spl.2005.04.020">10.1016/j.spl.2005.04.020</a>.</p>
+</div>
+<div>
+<p>Magnus, Jan R., and Heinz Neudecker. 1999. <em>Matrix Differential Calculus with Applications in Statistics and Econometrics</em>. Wiley Series in Probability and Statistics. John Wiley &amp; Sons, Ltd., Chichester.</p>
+</div>
+<div>
+<p>Manceur, Ameur M., and Pierre Dutilleul. 2013. “Maximum Likelihood Estimation for the Tensor Normal Distribution: Algorithm, Minimum Sample Size, and Empirical Bias and Dispersion.” <em>J. Comput. Appl. Math.</em> 239: 37–49. doi:<a href="https://doi.org/10.1016/j.cam.2012.09.017">10.1016/j.cam.2012.09.017</a>.</p>
+</div>
+<div>
+<p>Ohlson, Martin, M. Rauf Ahmad, and Dietrich von Rosen. 2013. “The Multilinear Normal Distribution: Introduction and Some Basic Properties.” <em>J. Multivariate Anal.</em> 113: 37–47. doi:<a href="https://doi.org/10.1016/j.jmva.2011.05.015">10.1016/j.jmva.2011.05.015</a>.</p>
+</div>
+<div>
+<p>Pourahmadi, Mohsen. 1999. “Joint Mean-Covariance Models with Applications to Longitudinal Data: Unconstrained Parameterisation.” <em>Biometrika</em> 86 (3): 677–90. doi:<a href="https://doi.org/10.1093/biomet/86.3.677">10.1093/biomet/86.3.677</a>.</p>
+</div>
+<div>
+<p>Silva, Vin de, and Lek-Heng Lim. 2008. “Tensor Rank and the Ill-Posedness of the Best Low-Rank Approximation Problem.” <em>SIAM J. Matrix Anal. Appl.</em> 30 (3): 1084–1127. doi:<a href="https://doi.org/10.1137/06066518X">10.1137/06066518X</a>.</p>
+</div>
+<div>
+<p>Srivastava, Muni Shanker, and C. G. Khatri. 1979. “An Introduction to Multivariate Statistics.” North-Holland, New York-Oxford.</p>
+</div>
+<div>
+<p>Tseng, P. 2001. “Convergence of a Block Coordinate Descent Method for Nondifferentiable Minimization.” <em>J. Optim. Theory Appl.</em> 109 (3): 475–94. doi:<a href="https://doi.org/10.1023/A:1017501703105">10.1023/A:1017501703105</a>.</p>
+</div>
+<div>
+<p>Tucker, Ledyard R. 1966. “Some Mathematical Notes on Three-Mode Factor Analysis.” <em>Psychometrika</em> 31: 279–311.</p>
+</div>
+<div>
+<p>Volfovsky, Alexander, and Peter D. Hoff. 2014. “Hierarchical Array Priors for ANOVA Decompositions of Cross-Classified Data.” <em>Ann. Appl. Stat.</em> 8 (1): 19–47. doi:<a href="https://doi.org/10.1214/13-AOAS685">10.1214/13-AOAS685</a>.</p>
+</div>
+<div>
+<p>Wiesel, Ami. 2012a. “Geodesic Convexity and Covariance Estimation.” <em>IEEE Trans. Signal Process.</em> 60 (12): 6182–9. doi:<a href="https://doi.org/10.1109/TSP.2012.2218241">10.1109/TSP.2012.2218241</a>.</p>
+</div>
+<div>
+<p>———. 2012b. “On the Convexity in Kronecker Structured Covariance Estimation.” In <em>Statistical Signal Processing Workshop (SSP), 2012 IEEE</em>, 880–83. IEEE.</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="final-words.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-references.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
